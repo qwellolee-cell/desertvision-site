@@ -126,52 +126,18 @@ main{position:relative;z-index:2;}
 .stencil-eyebrow{
   font-family:var(--mono);font-size:clamp(10px,1.4vw,13px);
   letter-spacing:.3em;text-transform:uppercase;
-  background:var(--cream);color:var(--ink);
-  padding:8px 14px;
-  transform:rotate(-1.2deg);
-  margin-bottom:3vh;
+  color:var(--cream);border:1px solid var(--line);
+  padding:9px 16px;
+  margin-bottom:3.5vh;
 }
-/* ============ THROWUP (the one chromatic peak) ============ */
-.throwup{
-  font-weight:700;
-  font-size:clamp(54px,14vw,188px);
-  line-height:.86;
-  letter-spacing:-.02em;
-  text-transform:uppercase;
-  transform:rotate(-2deg);
-  filter:url(#spray);
-}
-.throwup span{
-  display:block;
-  -webkit-text-stroke:2px var(--cream);
-  text-shadow:
-    5px 6px 0 var(--ink-deep),
-    10px 12px 0 rgba(0,0,0,.45);
-}
-.throwup .w1{color:var(--violet);}
-.throwup .w2{color:var(--teal);margin-left:.6em;}
-.throwup .w3{color:var(--copper);margin-left:.25em;}
+.stencil-eyebrow b{color:var(--violet);font-weight:700;}
 
-/* ============ FOUR YARDS (cities, no names — reveals live on IG) ============ */
-.yards{
-  margin-top:5vh;
-  display:flex;flex-wrap:wrap;gap:0;
-  font-family:var(--mono);font-size:clamp(11px,1.5vw,15px);
-  letter-spacing:.16em;text-transform:uppercase;color:var(--cream);
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-}
-.yards .yard{
-  padding:16px clamp(14px,2.4vw,30px);
-  border-right:1px solid var(--line);
-  display:flex;align-items:center;gap:10px;
-}
-.yards .yard:last-child{border-right:0;}
-.yards .yard .n{color:var(--violet);font-weight:700;}
-@media(max-width:640px){
-  .yards{font-size:11px;}
-  .yards .yard{padding:12px 14px;flex:1 0 44%;border-bottom:1px solid var(--line);}
-  .yards .yard:nth-child(even){border-right:0;}
-}
+/* ============ WORDMARK (Concrete Cartography plate) ============
+   KEEP IT = the outline (hollow, first line on the wall)
+   YARD    = the fill (two-tone violet/copper, sprayed edge, drips) */
+.wm-hero{width:min(100%,840px);height:auto;display:block;overflow:visible;}
+.wm-hero .stroke{fill:none;stroke:var(--cream);stroke-width:2;opacity:.92;}
+.wm-hero .stroke-lite{fill:none;stroke:var(--cream);stroke-width:1.6;opacity:.85;}
 
 /* ============ EVIDENCE STRIP (real frames from the campaign) ============ */
 .objects{
@@ -249,14 +215,6 @@ main{position:relative;z-index:2;}
 </head>
 <body>
 
-<!-- spray-paint edge filter for the display type -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <filter id="spray" x="-5%" y="-5%" width="110%" height="110%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.02 0.06" numOctaves="2" seed="7" result="n"/>
-    <feDisplacementMap in="SourceGraphic" in2="n" scale="6"/>
-  </filter>
-</svg>
-
 <main>
 
 <header class="hero">
@@ -287,19 +245,45 @@ main{position:relative;z-index:2;}
   </div>
 
   <div class="hero-core">
-    <span class="stencil-eyebrow">Various Artists · Vol.1</span>
-    <h1 class="throwup">
-      <span class="w1">Keep</span>
-      <span class="w2">It</span>
-      <span class="w3">Yard</span>
-    </h1>
+    <span class="stencil-eyebrow">Various Artists · Vol.1 · <b>DV009</b></span>
 
-    <div class="yards" aria-label="Four yards, one wall">
-      <span class="yard"><span class="n">01</span> Boston</span>
-      <span class="yard"><span class="n">02</span> Tel Aviv</span>
-      <span class="yard"><span class="n">03</span> Ancona</span>
-      <span class="yard"><span class="n">04</span> Valencia</span>
-    </div>
+    <h1 style="margin:0">
+      <svg class="wm-hero" viewBox="0 0 860 545" role="img" aria-label="KEEP IT YARD">
+        <defs>
+          <clipPath id="yardclip">
+            <text x="4" y="444" font-family="Space Grotesk" font-size="330"
+              font-weight="700" letter-spacing="-8">YARD</text>
+          </clipPath>
+          <linearGradient id="yardfill" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="#7B5EA7"/><stop offset=".52" stop-color="#7B5EA7"/>
+            <stop offset=".56" stop-color="#C17F4A"/><stop offset="1" stop-color="#C17F4A"/>
+          </linearGradient>
+          <filter id="sprayedge" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="5"/>
+          </filter>
+        </defs>
+
+        <!-- the outline: first line on the wall -->
+        <text class="stroke-lite" x="4" y="160" font-family="Space Grotesk"
+          font-size="185" font-weight="700" letter-spacing="-3">KEEP IT</text>
+
+        <!-- the fill: two-tone, sprayed edge -->
+        <g clip-path="url(#yardclip)" filter="url(#sprayedge)">
+          <rect x="0" y="170" width="860" height="300" fill="url(#yardfill)"/>
+        </g>
+        <!-- controlled drips -->
+        <g fill="#7B5EA7">
+          <rect x="62"  y="446" width="6" height="58" rx="3"/>
+          <rect x="258" y="448" width="5" height="40" rx="2.5"/>
+          <rect x="516" y="446" width="6" height="70" rx="3"/>
+          <rect x="694" y="448" width="5" height="46" rx="2.5"/>
+        </g>
+        <!-- the outline over the fill -->
+        <text class="stroke" x="4" y="444" font-family="Space Grotesk"
+          font-size="330" font-weight="700" letter-spacing="-8">YARD</text>
+      </svg>
+    </h1>
 
     <div class="objects" aria-label="Evidence from the four yards">
       <span class="ob"><img src="assets/outline/tile_can.jpg" alt="Crushed spray can with violet cap on concrete" loading="lazy"><i>01</i></span>
