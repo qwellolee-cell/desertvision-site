@@ -4,31 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Desert Vision — KEEP IT YARD VOL.1 · DV009</title>
-<meta name="description" content="Desert Vision — KEEP IT YARD VOL.1 (DV009). Fresh paint. Do not touch.">
+<meta name="description" content="Desert Vision — KEEP IT YARD VOL.1 (DV009). Four yards, one wall. 31.07.2026. Keep it real, stay true to your sound.">
 <meta property="og:title" content="DESERT VISION — KEEP IT YARD VOL.1">
-<meta property="og:description" content="DV009 · Fresh paint · Do not touch.">
+<meta property="og:description" content="DV009 · Four yards, one wall · 31.07.2026">
 <meta property="og:url" content="https://www.desertvision.it">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.desertvision.it/assets/og.jpg">
-<meta name="theme-color" content="#161512">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23161512'/%3E%3Cg stroke='%23EFEAE0' stroke-width='2.4' fill='none' stroke-linecap='round'%3E%3Cpath d='M12 30 C20 18 44 18 52 30'/%3E%3Cpath d='M12 33 C20 45 44 45 52 33'/%3E%3Ccircle cx='32' cy='31.5' r='8.5'/%3E%3C/g%3E%3Cpath d='M32 24 C33 29 34 30 39 31.5 C34 33 33 34 32 39 C31 34 30 33 25 31.5 C30 30 31 29 32 24 Z' fill='%23C17F4A'/%3E%3Crect x='41' y='40' width='2.2' height='8' rx='1' fill='%237B5EA7'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#141311">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23141311'/%3E%3Cg stroke='%23E9E3D6' stroke-width='2.4' fill='none' stroke-linecap='round'%3E%3Cpath d='M12 30 C20 18 44 18 52 30'/%3E%3Cpath d='M12 33 C20 45 44 45 52 33'/%3E%3Ccircle cx='32' cy='31.5' r='8.5'/%3E%3C/g%3E%3Cpath d='M32 24 C33 29 34 30 39 31.5 C34 33 33 34 32 39 C31 34 30 33 25 31.5 C30 30 31 29 32 24 Z' fill='%23C17F4A'/%3E%3Crect x='41' y='40' width='2.2' height='8' rx='1' fill='%237B5EA7'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-/* ============ TOKENS ============
-   concrete  #C9C5BC   wall light
-   cream     #EFEAE0   paper / paint
-   ink       #161512   outline black
-   violet    #7B5EA7   Adriatic violet
-   teal      #4A7C6F   oxidized teal
-   copper    #C17F4A   warm copper
-=================================== */
+/* ============ TOKENS · KEEP IT YARD dark system ============
+   ink       #141311   warm charcoal concrete (the wall)
+   ink-deep  #0C0B0A   shadow / depth
+   cream     #E9E3D6   paint / paper
+   cream-mut #968F82   secondary text
+   violet    #7B5EA7   Adriatic violet  (Purple Tape — the one accent)
+   teal      #4A7C6F   oxidized teal     (throwup only)
+   copper    #C17F4A   warm copper       (throwup only)
+============================================================ */
 :root{
-  --concrete:#C9C5BC;
-  --concrete-deep:#B5B1A6;
-  --cream:#EFEAE0;
-  --ink:#161512;
+  --ink:#141311;
+  --ink-deep:#0C0B0A;
+  --cream:#E9E3D6;
+  --cream-mut:#968F82;
+  --line:#2A2823;
   --violet:#7B5EA7;
   --teal:#4A7C6F;
   --copper:#C17F4A;
@@ -38,132 +40,192 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:var(--grotesk);
-  background:var(--concrete);
-  color:var(--ink);
+  background:var(--ink);
+  color:var(--cream);
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-::selection{background:var(--copper);color:var(--ink);}
+::selection{background:var(--violet);color:var(--cream);}
 a{color:inherit;}
-:focus-visible{outline:3px solid var(--copper);outline-offset:3px;}
+:focus-visible{outline:3px solid var(--violet);outline-offset:3px;}
 
-/* concrete grain overlay on the whole page */
+/* concrete grain over the whole wall */
 body::before{
   content:"";
   position:fixed;inset:0;z-index:50;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
-  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  mix-blend-mode:screen;opacity:.6;
 }
 main{position:relative;z-index:2;}
 
-/* ============ HERO (the whole page) ============ */
+/* ============ HERO ============ */
 .hero{
   min-height:100svh;
   display:flex;flex-direction:column;justify-content:space-between;
   padding:clamp(16px,3vw,36px) clamp(16px,3vw,36px) 0;
   position:relative;overflow:hidden;
   background:
-    radial-gradient(ellipse 90% 60% at 70% 10%, rgba(255,255,255,.25), transparent 60%),
-    linear-gradient(160deg, var(--concrete) 0%, var(--concrete-deep) 100%);
+    radial-gradient(ellipse 90% 55% at 72% 6%, rgba(233,227,214,.06), transparent 62%),
+    linear-gradient(165deg, #17150F 0%, var(--ink) 55%, var(--ink-deep) 100%);
 }
-/* faint stains on the wall */
+/* the real wall, barely surfacing through the dark */
+.wallbg{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url('assets/outline/wall.jpg') center/cover;
+  opacity:.13;filter:saturate(.6) contrast(1.05);
+  mix-blend-mode:screen;
+}
+/* faint colored stains bleeding through the concrete */
 .hero::after{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:
-    radial-gradient(circle 220px at 12% 78%, rgba(123,94,167,.10), transparent 70%),
-    radial-gradient(circle 260px at 88% 30%, rgba(74,124,111,.10), transparent 70%),
-    radial-gradient(circle 180px at 62% 88%, rgba(193,127,74,.12), transparent 70%);
+    radial-gradient(circle 240px at 10% 80%, rgba(123,94,167,.16), transparent 70%),
+    radial-gradient(circle 260px at 90% 26%, rgba(74,124,111,.12), transparent 70%),
+    radial-gradient(circle 200px at 60% 92%, rgba(193,127,74,.14), transparent 70%);
 }
 .topbar{
   display:flex;justify-content:space-between;align-items:center;gap:12px;
   font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream-mut);
 }
+.topbar .cat{color:var(--cream-mut);}
+.topbar .cat b{color:var(--violet);font-weight:700;}
+
 /* ============ LOGO (the eye) ============ */
 .logo{
   display:inline-flex;align-items:center;gap:13px;
-  color:var(--ink);text-decoration:none;line-height:1;
+  color:var(--cream);text-decoration:none;line-height:1;
 }
-.logo .mark{height:46px;width:auto;display:block;}
+.logo .mark{height:44px;width:auto;display:block;}
 .logo .wm{
-  font-family:var(--mono);font-size:14px;letter-spacing:.3em;
-  text-transform:lowercase;
+  font-family:var(--mono);font-size:13px;letter-spacing:.3em;
+  text-transform:lowercase;color:var(--cream);
 }
-/* paint drips running from the top edge of the wall */
-.drips{position:absolute;top:0;right:8%;width:34%;height:100%;pointer-events:none;z-index:1;}
-.drip{
-  position:absolute;top:0;width:10px;
-  border-radius:0 0 6px 6px;
-  opacity:.8;
-}
+/* paint drips running down from the top of the wall */
+.drips{position:absolute;top:0;right:9%;width:34%;height:100%;pointer-events:none;z-index:1;}
+.drip{position:absolute;top:0;width:9px;border-radius:0 0 6px 6px;opacity:.55;}
 .drip::after{
   content:"";position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);
-  width:14px;height:14px;border-radius:50%;
-  background:inherit;
+  width:13px;height:13px;border-radius:50%;background:inherit;
 }
-.drip.d1{left:8%;height:34vh;background:var(--violet);}
-.drip.d2{left:38%;height:52vh;background:var(--teal);width:7px;}
-.drip.d3{left:66%;height:24vh;background:var(--copper);width:12px;}
-.drip.d4{left:88%;height:41vh;background:var(--violet);width:6px;opacity:.5;}
+.drip.d1{left:8%;height:32vh;background:var(--violet);}
+.drip.d2{left:40%;height:50vh;background:var(--teal);width:6px;}
+.drip.d3{left:68%;height:22vh;background:var(--copper);width:11px;}
+.drip.d4{left:90%;height:40vh;background:var(--violet);width:5px;opacity:.35;}
 @media(max-width:900px){
   .drips{right:0;width:24%;}
   .drip.d1,.drip.d4{display:none;}
   .topbar{font-size:9px;letter-spacing:.1em;flex-wrap:wrap;}
 }
+
 .hero-core{
   position:relative;z-index:3;
   display:flex;flex-direction:column;align-items:flex-start;
-  padding:6vh 0 5vh;
+  padding:5vh 0 4vh;
 }
 .stencil-eyebrow{
   font-family:var(--mono);font-size:clamp(10px,1.4vw,13px);
   letter-spacing:.3em;text-transform:uppercase;
-  background:var(--ink);color:var(--cream);
+  background:var(--cream);color:var(--ink);
   padding:8px 14px;
   transform:rotate(-1.2deg);
   margin-bottom:3vh;
 }
+/* ============ THROWUP (the one chromatic peak) ============ */
 .throwup{
   font-weight:700;
-  font-size:clamp(56px,14.5vw,190px);
+  font-size:clamp(54px,14vw,188px);
   line-height:.86;
   letter-spacing:-.02em;
   text-transform:uppercase;
   transform:rotate(-2deg);
   filter:url(#spray);
 }
-.throwup .w1{
-  display:block;color:var(--violet);
-  -webkit-text-stroke:3px var(--ink);
-  text-shadow:6px 6px 0 var(--ink), 12px 12px 0 rgba(22,21,18,.18);
+.throwup span{
+  display:block;
+  -webkit-text-stroke:2px var(--cream);
+  text-shadow:
+    5px 6px 0 var(--ink-deep),
+    10px 12px 0 rgba(0,0,0,.45);
 }
-.throwup .w2{
-  display:block;color:var(--teal);
-  -webkit-text-stroke:3px var(--ink);
-  text-shadow:6px 6px 0 var(--ink), 12px 12px 0 rgba(22,21,18,.18);
-  margin-left:.6em;
+.throwup .w1{color:var(--violet);}
+.throwup .w2{color:var(--teal);margin-left:.6em;}
+.throwup .w3{color:var(--copper);margin-left:.25em;}
+
+/* ============ FOUR YARDS (cities, no names — reveals live on IG) ============ */
+.yards{
+  margin-top:5vh;
+  display:flex;flex-wrap:wrap;gap:0;
+  font-family:var(--mono);font-size:clamp(11px,1.5vw,15px);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--cream);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
 }
-.throwup .w3{
-  display:block;color:var(--copper);
-  -webkit-text-stroke:3px var(--ink);
-  text-shadow:6px 6px 0 var(--ink), 12px 12px 0 rgba(22,21,18,.18);
-  margin-left:.25em;
+.yards .yard{
+  padding:16px clamp(14px,2.4vw,30px);
+  border-right:1px solid var(--line);
+  display:flex;align-items:center;gap:10px;
 }
-.cta-row{margin-top:5.5vh;}
+.yards .yard:last-child{border-right:0;}
+.yards .yard .n{color:var(--violet);font-weight:700;}
+@media(max-width:640px){
+  .yards{font-size:11px;}
+  .yards .yard{padding:12px 14px;flex:1 0 44%;border-bottom:1px solid var(--line);}
+  .yards .yard:nth-child(even){border-right:0;}
+}
+
+/* ============ EVIDENCE STRIP (real frames from the campaign) ============ */
+.objects{
+  margin-top:4.5vh;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+  max-width:760px;width:100%;
+}
+.objects .ob{
+  position:relative;overflow:hidden;aspect-ratio:1;
+  border:1px solid var(--line);background:var(--ink-deep);
+}
+.objects .ob img{
+  display:block;width:100%;height:100%;object-fit:cover;
+  filter:saturate(.85);transition:transform .5s ease;
+}
+.objects .ob:hover img{transform:scale(1.05);}
+.objects .ob i{
+  position:absolute;bottom:8px;left:8px;font-style:normal;
+  font-family:var(--mono);font-size:9px;letter-spacing:.16em;
+  color:var(--cream);background:rgba(20,19,17,.68);padding:3px 7px;
+}
+@media(max-width:640px){.objects{grid-template-columns:repeat(2,1fr);}}
+
+.payoff{
+  margin-top:4.5vh;max-width:20ch;
+  font-family:var(--grotesk);font-weight:500;
+  font-size:clamp(20px,3.4vw,34px);line-height:1.12;
+  color:var(--cream);
+}
+.payoff .b{color:var(--violet);}
+
+.cta-row{margin-top:4.5vh;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
 .cta{
   font-family:var(--mono);font-size:12px;font-weight:700;
   letter-spacing:.2em;text-transform:uppercase;
   text-decoration:none;
   padding:15px 24px;
-  border:3px solid var(--ink);
-  transition:transform .12s ease, box-shadow .12s ease;
+  border:2px solid var(--cream);
+  transition:transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease;
   display:inline-block;
-  background:var(--copper);color:var(--ink);box-shadow:5px 5px 0 var(--ink);
+  background:transparent;color:var(--cream);box-shadow:5px 5px 0 var(--violet);
 }
-.cta:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink);}
+.cta:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--violet);background:var(--cream);color:var(--ink);}
+.cta.ghost{border-color:var(--violet);color:var(--cream);box-shadow:5px 5px 0 var(--copper);}
+.cta.ghost:hover{box-shadow:8px 8px 0 var(--copper);background:var(--violet);color:var(--cream);}
+.cta-note{
+  font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cream-mut);
+}
+.cta-note b{color:var(--cream);font-weight:700;}
 
 /* ============ TAPE MARQUEE (bottom edge) ============ */
 .tape{
-  background:var(--ink);color:var(--cream);
+  background:var(--cream);color:var(--ink);
   overflow:hidden;white-space:nowrap;
   transform:rotate(-.6deg) scale(1.04);
   position:relative;z-index:4;
@@ -176,7 +238,7 @@ main{position:relative;z-index:2;}
   padding:12px 0;
   animation:slide 28s linear infinite;
 }
-.tape-inner .sep{color:var(--copper);margin:0 1.2em;}
+.tape-inner .sep{color:var(--violet);margin:0 1.2em;}
 @keyframes slide{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
 @media(prefers-reduced-motion:reduce){
@@ -198,6 +260,7 @@ main{position:relative;z-index:2;}
 <main>
 
 <header class="hero">
+  <div class="wallbg" aria-hidden="true"></div>
   <div class="drips" aria-hidden="true">
     <span class="drip d1"></span><span class="drip d2"></span><span class="drip d3"></span><span class="drip d4"></span>
   </div>
@@ -220,25 +283,45 @@ main{position:relative;z-index:2;}
       </svg>
       <span class="wm">desert vision</span>
     </a>
+    <span class="cat">DV009 · <b>31.07.2026</b></span>
   </div>
 
   <div class="hero-core">
-    <span class="stencil-eyebrow">DV009 · Vol.1</span>
+    <span class="stencil-eyebrow">Various Artists · Vol.1</span>
     <h1 class="throwup">
       <span class="w1">Keep</span>
       <span class="w2">It</span>
       <span class="w3">Yard</span>
     </h1>
+
+    <div class="yards" aria-label="Four yards, one wall">
+      <span class="yard"><span class="n">01</span> Boston</span>
+      <span class="yard"><span class="n">02</span> Tel Aviv</span>
+      <span class="yard"><span class="n">03</span> Ancona</span>
+      <span class="yard"><span class="n">04</span> Valencia</span>
+    </div>
+
+    <div class="objects" aria-label="Evidence from the four yards">
+      <span class="ob"><img src="assets/outline/tile_can.jpg" alt="Crushed spray can with violet cap on concrete" loading="lazy"><i>01</i></span>
+      <span class="ob"><img src="assets/outline/tile_freccia.jpg" alt="Arrow carved into teal plaster" loading="lazy"><i>02</i></span>
+      <span class="ob"><img src="assets/outline/tile_chiave.jpg" alt="Old key embedded in concrete" loading="lazy"><i>03</i></span>
+      <span class="ob"><img src="assets/outline/tile_corda.jpg" alt="Bleached rope with a violet mark" loading="lazy"><i>04</i></span>
+    </div>
+
+    <p class="payoff">Four yards, one wall.<br>Keep it real —<br><span class="b">stay true to your sound.</span></p>
+
     <div class="cta-row">
       <a class="cta" href="https://www.instagram.com/desertvision_music/" target="_blank" rel="noopener">Follow the drop</a>
+      <a class="cta ghost" href="/outline/">Outline — free instrument</a>
+      <span class="cta-note">Out <b>31.07</b> — all platforms</span>
     </div>
   </div>
 
   <div class="tape" aria-hidden="true">
     <div class="tape-inner">
-      FRESH PAINT <span class="sep">■</span> DO NOT TOUCH <span class="sep">■</span> KEEP IT YARD <span class="sep">■</span> DV009 <span class="sep">■</span>
-      FRESH PAINT <span class="sep">■</span> DO NOT TOUCH <span class="sep">■</span> KEEP IT YARD <span class="sep">■</span> DV009 <span class="sep">■</span>
-      FRESH PAINT <span class="sep">■</span> DO NOT TOUCH <span class="sep">■</span> KEEP IT YARD <span class="sep">■</span> DV009 <span class="sep">■</span>
+      FRESH PAINT <span class="sep">■</span> KEEP IT YARD <span class="sep">■</span> DV009 <span class="sep">■</span> OUTLINE · FREE INSTRUMENT <span class="sep">■</span>
+      FRESH PAINT <span class="sep">■</span> KEEP IT YARD <span class="sep">■</span> DV009 <span class="sep">■</span> OUTLINE · FREE INSTRUMENT <span class="sep">■</span>
+      FRESH PAINT <span class="sep">■</span> KEEP IT YARD <span class="sep">■</span> DV009 <span class="sep">■</span> OUTLINE · FREE INSTRUMENT <span class="sep">■</span>
     </div>
   </div>
 </header>

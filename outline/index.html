@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OUTLINE — free instrument · Desert Vision</title>
+<meta name="description" content="OUTLINE — one-knob build instrument, free. Fill the outline: your email fills the piece, the rest is style. VST3 / AU · numbered v1.0.">
+<meta property="og:title" content="OUTLINE — fill the outline">
+<meta property="og:description" content="Free one-knob build instrument · VST3/AU · numbered v1.0 · the first line before the fill">
+<meta property="og:url" content="https://www.desertvision.it/outline/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.desertvision.it/assets/og.jpg">
+<meta name="theme-color" content="#141311">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23141311'/%3E%3Cg stroke='%23E9E3D6' stroke-width='2.4' fill='none' stroke-linecap='round'%3E%3Cpath d='M12 30 C20 18 44 18 52 30'/%3E%3Cpath d='M12 33 C20 45 44 45 52 33'/%3E%3Ccircle cx='32' cy='31.5' r='8.5'/%3E%3C/g%3E%3Cpath d='M32 24 C33 29 34 30 39 31.5 C34 33 33 34 32 39 C31 34 30 33 25 31.5 C30 30 31 29 32 24 Z' fill='%23C17F4A'/%3E%3Crect x='41' y='40' width='2.2' height='8' rx='1' fill='%237B5EA7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141311;--ink-deep:#0C0B0A;--cream:#E9E3D6;--cream-mut:#968F82;--line:#2A2823;
+  --violet:#7B5EA7;--teal:#4A7C6F;--copper:#C17F4A;
+  --grotesk:'Space Grotesk',system-ui,sans-serif;--mono:'Space Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--grotesk);background:var(--ink);color:var(--cream);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--violet);color:var(--cream)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
+body::before{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  mix-blend-mode:screen;opacity:.6}
+main{position:relative;z-index:2}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.mut{color:var(--cream-mut)}
+
+/* ============ topbar ============ */
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:clamp(16px,3vw,36px) clamp(16px,3vw,36px) 0;
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream-mut)}
+.logo{display:inline-flex;align-items:center;gap:13px;color:var(--cream);
+  text-decoration:none;line-height:1}
+.logo .mark{height:44px;width:auto;display:block}
+.logo .wm{font-family:var(--mono);font-size:13px;letter-spacing:.3em;text-transform:lowercase;
+  color:var(--cream)}
+.topbar .cat b{color:var(--violet);font-weight:700}
+
+/* ============ hero on the real wall ============ */
+.hero{position:relative;margin:clamp(16px,3vw,36px);border:1px solid var(--line);
+  overflow:hidden;text-align:center;padding:clamp(40px,7vw,84px) 18px clamp(34px,5vw,60px);
+  isolation:isolate}
+.hero .wallbg{position:absolute;inset:0;z-index:-2;
+  background:url('../assets/outline/wall.jpg') center/cover;
+  filter:saturate(.72) contrast(1.02)}
+.hero .veil{position:absolute;inset:0;z-index:-1;background:rgba(20,19,17,.84)}
+.eyebrow{font-family:var(--mono);font-size:clamp(10px,1.3vw,12px);letter-spacing:.3em;
+  text-transform:uppercase;background:var(--cream);color:var(--ink);padding:8px 14px;
+  display:inline-block;transform:rotate(-1.2deg);margin-bottom:4vh}
+.wmwrap{position:relative;margin:0 auto;max-width:820px}
+.wm-svg{width:100%;height:auto;display:block;overflow:visible}
+.wm-svg .stroke{fill:none;stroke:var(--cream);stroke-width:1.7;opacity:.92}
+.wm-svg .fillband{opacity:0;transform:translateY(16px);
+  transition:opacity 1.2s ease,transform 1.2s ease}
+.wm-svg .fillband.on{opacity:1;transform:none}
+.wm-svg .hl{fill:none;stroke:#fff;stroke-width:1;opacity:0;transition:opacity 1s ease}
+.wm-svg .hl.on{opacity:.85}
+.wm-svg .ffield{fill:none;stroke:var(--teal);stroke-width:15;opacity:0;filter:blur(9px);
+  transition:opacity 1.4s ease}
+.wm-svg .ffield.on{opacity:.5}
+.wm-svg .drip{transform:scaleY(0);transform-origin:top;
+  transition:transform 1.6s cubic-bezier(.2,.8,.3,1)}
+.wm-svg .drip.on{transform:scaleY(1)}
+@media(prefers-reduced-motion:reduce){
+  .wm-svg .fillband,.wm-svg .hl,.wm-svg .ffield,.wm-svg .drip{transition:opacity .2s}
+  .wm-svg .drip{transform:none}}
+.hero .cansprite{position:absolute;right:2%;bottom:-4%;width:clamp(64px,9vw,110px);
+  transform:rotate(6deg);filter:drop-shadow(-12px 10px 16px rgba(12,11,10,.6));z-index:1}
+.tagline{font-weight:500;font-size:clamp(17px,2.6vw,24px);margin-top:2.5vh}
+.subtag{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cream-mut);margin-top:12px}
+.subtag b{color:var(--cream);font-weight:700}
+
+/* ============ gate cards ============ */
+.gate-wrap{padding:0 clamp(16px,3vw,36px)}
+.rule{display:flex;align-items:center;gap:14px;margin:44px 0 22px}
+.rule::before,.rule::after{content:"";flex:1;height:1px;background:var(--line)}
+.rule span{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cream-mut);white-space:nowrap}
+.gate{display:grid;grid-template-columns:1.55fr 1fr 1fr;gap:12px;max-width:1020px;margin:0 auto}
+@media(max-width:820px){.gate{grid-template-columns:1fr 1fr}.gcard.main{grid-column:1/-1}}
+@media(max-width:520px){.gate{grid-template-columns:1fr}}
+.gcard{border:1px solid var(--line);background:#17150F;display:flex;flex-direction:column}
+.gcard.main{border-color:var(--cream)}
+.tile{position:relative;overflow:hidden}
+.tile img{display:block;width:100%;height:100%;object-fit:cover}
+.gcard .tile{aspect-ratio:4/3}
+.gcard.main .tile{aspect-ratio:16/8}
+.tile .idx{position:absolute;top:10px;left:10px;font-family:var(--mono);font-size:9px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--cream);
+  background:rgba(20,19,17,.68);padding:4px 8px}
+.gcard .body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.gcard h2{font-weight:500;font-size:16px;letter-spacing:.03em}
+.gcard .lay{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--cream-mut);
+  text-transform:uppercase}
+.gcard p{font-size:13px;color:var(--cream-mut);flex:1;line-height:1.5}
+.opt{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--copper);border:1px solid var(--copper);padding:2px 7px;align-self:flex-start}
+.abtn{cursor:pointer;width:100%;background:none;border:1px solid var(--cream);color:var(--cream);
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  padding:12px 8px;transition:background .2s,color .2s,border-color .2s;
+  text-decoration:none;display:block;text-align:center}
+.abtn:hover:not(:disabled){background:var(--cream);color:var(--ink)}
+.abtn:disabled{cursor:default;border-color:var(--line);color:var(--cream-mut)}
+.emailrow{display:flex;gap:8px}
+@media(max-width:480px){.emailrow{flex-direction:column}}
+.emailrow input{background:var(--ink);border:1px solid var(--line);color:var(--cream);
+  font-family:var(--mono);font-size:12px;padding:12px;flex:1;min-width:0}
+.emailrow .abtn{width:auto;padding:12px 18px;white-space:nowrap}
+.gatefoot{display:flex;justify-content:space-between;gap:14px;margin:14px auto 0;max-width:1020px;
+  flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--cream-mut)}
+
+/* ============ unlock ============ */
+.unlock{display:none;max-width:1020px;margin:40px auto 0;border:1px solid var(--cream);
+  overflow:hidden}
+.unlock.show{display:grid;grid-template-columns:240px 1fr;animation:rise .8s ease}
+@media(max-width:680px){.unlock.show{grid-template-columns:1fr}}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.unlock.show{animation:none}}
+.unlock .tile{min-height:220px}
+.unlock .body{padding:clamp(22px,4vw,38px)}
+.unlock h3{font-weight:500;font-size:clamp(22px,4vw,32px);letter-spacing:.02em;margin:8px 0 10px}
+.unlock p{color:var(--cream-mut);font-size:13.5px;max-width:56ch;line-height:1.55}
+.unlock p b{color:var(--cream);font-weight:500}
+.dlrow{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+.dlrow .abtn{width:auto;padding:13px 26px}
+.dlrow .bp{border-color:var(--copper);color:var(--copper)}
+.dlrow .bp:hover{background:var(--copper);color:var(--ink)}
+
+/* ============ footer ============ */
+.foot{margin-top:64px;padding:0 clamp(16px,3vw,36px) 26px;display:flex;
+  justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center;
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream-mut)}
+.count{display:flex;gap:16px}
+.count div{text-align:center}
+.count b{display:block;font-size:22px;font-weight:700;color:var(--cream);
+  font-variant-numeric:tabular-nums;letter-spacing:.04em;font-family:var(--grotesk)}
+.tape{background:var(--cream);color:var(--ink);overflow:hidden;white-space:nowrap;
+  transform:rotate(-.6deg) scale(1.04);position:relative;z-index:4;margin-top:34px}
+.tape-inner{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:700;
+  letter-spacing:.3em;text-transform:uppercase;padding:12px 0;
+  animation:slide 28s linear infinite}
+.tape-inner .sep{color:var(--violet);margin:0 1.2em}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.tape-inner{animation:none}}
+</style>
+</head>
+<body>
+
+<main>
+<div class="topbar">
+  <a class="logo" href="/" aria-label="Desert Vision — home">
+    <svg class="mark" viewBox="52 92 296 190" aria-hidden="true">
+      <g stroke="currentColor" stroke-width="9" stroke-linecap="round" fill="none">
+        <path d="M 78,163 C 120,105 280,105 322,163"/>
+        <path d="M 78,177 C 120,235 280,235 322,177"/>
+        <path d="M 78,163 L 64,155"/><path d="M 78,177 L 64,185"/>
+        <path d="M 322,163 L 336,155"/><path d="M 322,177 L 336,185"/>
+        <circle cx="200" cy="170" r="46"/>
+      </g>
+      <path d="M200,126 C205,156 212,163 240,170 C212,177 205,184 200,214 C195,184 188,177 160,170 C188,163 195,156 200,126 Z" fill="#C17F4A"/>
+      <g fill="#7B5EA7">
+        <path d="M252,214 L259,214 L258,262 C258,266 254,266 253,262 Z"/>
+        <circle cx="255.5" cy="265" r="6.5"/>
+      </g>
+    </svg>
+    <span class="wm">desert vision</span>
+  </a>
+  <span class="cat">DV009·i · <b>free instrument</b></span>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wallbg" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <span class="eyebrow">Free instrument · VST3 / AU</span>
+
+  <div class="wmwrap">
+    <svg class="wm-svg" viewBox="0 0 900 232" role="img"
+      aria-label="OUTLINE — the wordmark fills as you complete the steps">
+      <defs>
+        <clipPath id="wmclip">
+          <text x="450" y="158" text-anchor="middle" font-family="Space Grotesk"
+            font-size="172" font-weight="700" letter-spacing="-2">OUTLINE</text>
+        </clipPath>
+        <linearGradient id="twotone" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stop-color="#7B5EA7"/><stop offset=".52" stop-color="#7B5EA7"/>
+          <stop offset=".56" stop-color="#C17F4A"/><stop offset="1" stop-color="#C17F4A"/>
+        </linearGradient>
+        <filter id="sprayedge" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="5"/>
+        </filter>
+      </defs>
+      <text class="ffield" id="ffield" x="450" y="158" text-anchor="middle"
+        font-family="Space Grotesk" font-size="172" font-weight="700"
+        letter-spacing="-2">OUTLINE</text>
+      <g clip-path="url(#wmclip)" filter="url(#sprayedge)">
+        <rect class="fillband" id="fillband" x="0" y="0" width="900" height="190" fill="url(#twotone)"/>
+      </g>
+      <g fill="#7B5EA7">
+        <rect class="drip" x="118" y="150" width="5" height="52" rx="2.5"/>
+        <rect class="drip" x="255" y="152" width="4" height="38" rx="2"/>
+        <rect class="drip" x="472" y="150" width="5" height="64" rx="2.5"/>
+        <rect class="drip" x="633" y="152" width="4" height="30" rx="2"/>
+        <rect class="drip" x="762" y="150" width="5" height="46" rx="2.5"/>
+      </g>
+      <text class="stroke" x="450" y="158" text-anchor="middle"
+        font-family="Space Grotesk" font-size="172" font-weight="700"
+        letter-spacing="-2">OUTLINE</text>
+      <text class="hl" id="hl" x="446" y="154" text-anchor="middle"
+        font-family="Space Grotesk" font-size="172" font-weight="700"
+        letter-spacing="-2">OUTLINE</text>
+    </svg>
+  </div>
+
+  <img class="cansprite" src="../assets/outline/can.webp" alt="" aria-hidden="true">
+
+  <div class="tagline">the first line before the fill</div>
+  <div class="subtag">one knob · numbered v1.0 · <b>free</b> — your email fills the piece</div>
+</header>
+
+<!-- GATE -->
+<div class="gate-wrap">
+  <div class="rule"><span>fill the outline</span></div>
+
+  <div class="gate">
+    <div class="gcard main">
+      <div class="tile">
+        <img src="../assets/outline/drain.jpg" alt="Violet paint running toward a storm drain on concrete" loading="lazy">
+        <span class="idx">layer 01 · fill</span>
+      </div>
+      <div class="body">
+        <div class="lay">layer 01 · the fill — required</div>
+        <h2>Drop your email. We send you OUTLINE.</h2>
+        <p>That's the whole deal: one email, the instrument lands in your inbox with your
+          specimen number. No spam — the link, plus one email when the record drops.</p>
+        <form class="emailrow" id="gateform" novalidate>
+          <input type="email" id="email" name="email" placeholder="you@yard.com"
+            aria-label="email" autocomplete="email" required>
+          <button class="abtn" id="bemail" type="submit">send me outline</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="gcard">
+      <div class="tile">
+        <img src="../assets/outline/freccia.jpg" alt="Arrow carved into teal plaster" loading="lazy">
+        <span class="idx">layer 02 · highlights</span>
+      </div>
+      <div class="body">
+        <span class="opt">optional · pure style</span>
+        <div class="lay">layer 02 · the highlights</div>
+        <p>Run with the yard — your piece gets the white shines.</p>
+        <a class="abtn" id="bfollow" href="https://www.instagram.com/desertvision_music/"
+          target="_blank" rel="noopener">follow @desertvision_music</a>
+      </div>
+    </div>
+
+    <div class="gcard">
+      <div class="tile">
+        <img src="../assets/outline/chiave.jpg" alt="Old key embedded in concrete" loading="lazy">
+        <span class="idx">layer 03 · forcefield</span>
+      </div>
+      <div class="body">
+        <span class="opt">optional · day one</span>
+        <div class="lay">layer 03 · the forcefield</div>
+        <p>Pre-save the record — the cloud goes around the piece. Out 31.07.</p>
+        <button class="abtn" id="bpresave" type="button">pre-save DV009</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="gatefoot">
+    <span>numbered v1.0 · closes at 500</span>
+    <span>your nº rides in the email</span>
+  </div>
+
+  <!-- UNLOCK -->
+  <div class="unlock" id="unlock">
+    <div class="tile">
+      <img src="../assets/outline/pennello.jpg" alt="Brush mixing copper and violet paint" loading="lazy">
+      <span class="idx">full fill</span>
+    </div>
+    <div class="body">
+      <div class="mono mut">the fill is in · check your inbox</div>
+      <h3>Welcome to the yard.</h3>
+      <p>The download link and your <b>OUTLINER number</b> are on their way to
+        <b id="sentTo">your inbox</b>. Add the highlights and the forcefield while you wait —
+        the piece isn't finished until it shines.</p>
+      <div class="dlrow">
+        <a class="abtn bp" href="https://www.instagram.com/desertvision_music/"
+          target="_blank" rel="noopener">the record lives here — 31.07</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="foot">
+  <div>
+    <div style="margin-bottom:8px">DV009 · out 31.07.2026</div>
+    <div class="count">
+      <div><b id="cdd">—</b><span>days</span></div>
+      <div><b id="cdh">—</b><span>hrs</span></div>
+      <div><b id="cdm">—</b><span>min</span></div>
+      <div><b id="cds">—</b><span>sec</span></div>
+    </div>
+  </div>
+  <div style="text-align:right">
+    <div>desert vision — MMXXVI</div>
+    <div style="margin-top:6px"><a href="/" style="text-decoration:none">← back to the wall</a></div>
+  </div>
+</div>
+
+<div class="tape" aria-hidden="true">
+  <div class="tape-inner">
+    OUTLINE <span class="sep">■</span> FREE INSTRUMENT <span class="sep">■</span> FILL THE OUTLINE <span class="sep">■</span> DV009 <span class="sep">■</span>
+    OUTLINE <span class="sep">■</span> FREE INSTRUMENT <span class="sep">■</span> FILL THE OUTLINE <span class="sep">■</span> DV009 <span class="sep">■</span>
+    OUTLINE <span class="sep">■</span> FREE INSTRUMENT <span class="sep">■</span> FILL THE OUTLINE <span class="sep">■</span> DV009 <span class="sep">■</span>
+  </div>
+</div>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  /* ==== CONFIG — da compilare quando i servizi sono live ====
+     FORM_ENDPOINT: endpoint POST del form (ESP / Formspree / worker).
+                    Finché è vuoto il form apre una mail pre-compilata a CONTACT.
+     PRESAVE_URL:   link pre-save (Proton / Feature.fm). Finché è vuoto il
+                    bottone mostra lo stato "opens soon". */
+  var FORM_ENDPOINT = '';
+  var PRESAVE_URL = '';
+  var CONTACT = 'andrea@desertvision.it';
+
+  function on(id){ var el=document.getElementById(id); el.classList.add('on'); return el; }
+
+  /* ---- layer 01: email = fill ---- */
+  var form=document.getElementById('gateform'), email=document.getElementById('email'),
+      bemail=document.getElementById('bemail'), done=false;
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var v=email.value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+      email.style.borderColor='#C17F4A'; email.placeholder='we need a real one';
+      email.value=''; email.focus(); return;
+    }
+    if(done) return; done=true;
+    bemail.disabled=true; bemail.textContent='sending…';
+    var finish=function(){
+      bemail.textContent='link sent ✓'; email.disabled=true;
+      document.getElementById('fillband').classList.add('on');
+      document.querySelectorAll('.wm-svg .drip').forEach(function(d,i){
+        setTimeout(function(){ d.classList.add('on'); }, 300+i*220);
+      });
+      document.getElementById('sentTo').textContent=v;
+      var u=document.getElementById('unlock'); u.classList.add('show');
+      u.scrollIntoView({behavior:'smooth',block:'center'});
+    };
+    if(FORM_ENDPOINT){
+      fetch(FORM_ENDPOINT,{method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email:v,source:'outline-gate'})})
+        .then(finish, function(){
+          window.location.href='mailto:'+CONTACT+
+            '?subject='+encodeURIComponent('OUTLINE — send me the instrument')+
+            '&body='+encodeURIComponent('My email: '+v);
+          finish();
+        });
+    }else{
+      window.location.href='mailto:'+CONTACT+
+        '?subject='+encodeURIComponent('OUTLINE — send me the instrument')+
+        '&body='+encodeURIComponent('My email: '+v);
+      finish();
+    }
+  });
+
+  /* ---- layer 02: follow = highlights ---- */
+  document.getElementById('bfollow').addEventListener('click', function(){
+    on('hl');
+    this.textContent='following ✓ shines on';
+  });
+
+  /* ---- layer 03: pre-save = forcefield ---- */
+  var bp=document.getElementById('bpresave');
+  if(PRESAVE_URL){
+    bp.addEventListener('click', function(){
+      window.open(PRESAVE_URL,'_blank','noopener');
+      on('ffield');
+      bp.textContent='pre-saved ✓ forcefield up';
+    });
+  }else{
+    bp.addEventListener('click', function(){
+      bp.textContent='pre-save opens soon';
+      setTimeout(function(){ bp.textContent='pre-save DV009'; }, 2200);
+    });
+  }
+
+  /* ---- countdown ---- */
+  var T=new Date('2026-07-31T00:00:00+02:00').getTime();
+  function cd(){
+    var d=Math.max(0,T-Date.now());
+    document.getElementById('cdd').textContent=Math.floor(d/864e5);
+    document.getElementById('cdh').textContent=String(Math.floor(d/36e5)%24).padStart(2,'0');
+    document.getElementById('cdm').textContent=String(Math.floor(d/6e4)%60).padStart(2,'0');
+    document.getElementById('cds').textContent=String(Math.floor(d/1e3)%60).padStart(2,'0');
+  }
+  cd(); setInterval(cd,1000);
+})();
+</script>
+</body>
+</html>
