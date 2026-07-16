@@ -339,12 +339,12 @@ main{position:relative;z-index:2}
 <script>
 (function(){
   "use strict";
-  /* ==== CONFIG — da compilare quando i servizi sono live ====
-     FORM_ENDPOINT: endpoint POST del form (ESP / Formspree / worker).
-                    Finché è vuoto il form apre una mail pre-compilata a CONTACT.
+  /* ==== CONFIG ====
+     FORM_ENDPOINT: FormSubmit.co (nessun account) — le email arrivano a CONTACT.
+                    Attivato con un click sulla mail di conferma (16/07).
      PRESAVE_URL:   link pre-save (Proton / Feature.fm). Finché è vuoto il
                     bottone mostra lo stato "opens soon". */
-  var FORM_ENDPOINT = '';
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/andrea@desertvision.it';
   var PRESAVE_URL = '';
   var CONTACT = 'andrea@desertvision.it';
 
@@ -372,16 +372,24 @@ main{position:relative;z-index:2}
       var u=document.getElementById('unlock'); u.classList.add('show');
       u.scrollIntoView({behavior:'smooth',block:'center'});
     };
+    var fallback=function(){
+      window.location.href='mailto:'+CONTACT+
+        '?subject='+encodeURIComponent('OUTLINE — send me the instrument')+
+        '&body='+encodeURIComponent('My email: '+v);
+      finish();
+    };
     if(FORM_ENDPOINT){
       fetch(FORM_ENDPOINT,{method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({email:v,source:'outline-gate'})})
-        .then(finish, function(){
-          window.location.href='mailto:'+CONTACT+
-            '?subject='+encodeURIComponent('OUTLINE — send me the instrument')+
-            '&body='+encodeURIComponent('My email: '+v);
-          finish();
-        });
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({
+          email:v,
+          source:'outline-gate',
+          _subject:'OUTLINE gate — nuova email',
+          _template:'table',
+          _captcha:'false'
+        })})
+        .then(function(r){ if(r.ok){ finish(); } else { fallback(); } })
+        .catch(fallback);
     }else{
       window.location.href='mailto:'+CONTACT+
         '?subject='+encodeURIComponent('OUTLINE — send me the instrument')+
