@@ -405,10 +405,17 @@ section{position:relative;z-index:2;}
 
 <!-- ─────────────────────────────────────────────────────────────
      RELEASE LINKS · swap these four hrefs when a URL changes.
-       Spotify      → id="lnk-spotify"      PLACEHOLDER: search URL, not the album
-       Apple Music  → id="lnk-apple"        PLACEHOLDER: search URL, not the album
-       SoundCloud   → id="lnk-soundcloud"   direct, playlist
-       Beatport     → id="lnk-beatport"     direct, DV009 release page
+     Stato verificato 31/07/2026:
+       Spotify      → id="lnk-spotify"      LIVE, album 7eOGjs79VEfYyqUxW8LDN5
+       SoundCloud   → id="lnk-soundcloud"   LIVE, playlist
+       Beatport     → id="lnk-beatport"     LIVE, DV009 release page
+       Apple Music  → id="lnk-apple"        NON ANCORA USCITO — Apple riporta
+                                            "Anteprima · 14 agosto 2026" sull'album
+                                            6791180407. Marcato class="dest soon"
+                                            con etichetta 14.08 al posto di Stream;
+                                            il link resta attivo per il pre-add.
+                                            Il 14/08: togliere " soon" dalla class
+                                            e rimettere l'etichetta Stream.
      ───────────────────────────────────────────────────────────── -->
 
 <main>
@@ -619,16 +626,16 @@ section{position:relative;z-index:2;}
       </div>
 
       <div class="dests reveal">
-        <a class="dest" id="lnk-spotify" href="https://open.spotify.com/search/Keep%20It%20Yard%20Desert%20Vision" target="_blank" rel="noopener">
+        <a class="dest" id="lnk-spotify" href="https://open.spotify.com/album/7eOGjs79VEfYyqUxW8LDN5" target="_blank" rel="noopener">
           <img class="ico" src="https://cdn.simpleicons.org/spotify/E9E3D6" alt="" width="24" height="24" loading="lazy" onerror="this.remove()">
           <span class="name">Spotify</span>
           <span class="act"><span>Stream</span><span class="arrow">&rarr;</span></span>
         </a>
 
-        <a class="dest" id="lnk-apple" href="https://music.apple.com/search?term=Keep%20It%20Yard%20Desert%20Vision" target="_blank" rel="noopener">
+        <a class="dest soon" id="lnk-apple" href="https://music.apple.com/it/album/keep-it-yard-vol-1-ep/6791180407" target="_blank" rel="noopener">
           <img class="ico" src="https://cdn.simpleicons.org/applemusic/E9E3D6" alt="" width="24" height="24" loading="lazy" onerror="this.remove()">
           <span class="name">Apple Music</span>
-          <span class="act"><span>Stream</span><span class="arrow">&rarr;</span></span>
+          <span class="act"><span>14.08</span><span class="arrow">&rarr;</span></span>
         </a>
 
         <a class="dest" id="lnk-soundcloud" href="https://soundcloud.com/desert-vision/sets/keep-it-yard-vol-1" target="_blank" rel="noopener">
