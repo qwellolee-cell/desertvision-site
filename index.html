@@ -1,30 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="facebook-domain-verification" content="8foah63wcg6ajkwdkl3gqjqsfc22km" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Desert Vision — KEEP IT YARD VOL.1 · DV009</title>
-<meta name="description" content="Desert Vision — KEEP IT YARD VOL.1 (DV009). Four yards, one wall. 31.07.2026. Keep it real, stay true to your sound.">
-<meta property="og:title" content="DESERT VISION — KEEP IT YARD VOL.1">
-<meta property="og:description" content="DV009 · Four yards, one wall · 31.07.2026">
+<title>KEEP IT YARD VOL.1 (DV009) · Desert Vision</title>
+<meta name="description" content="KEEP IT YARD VOL.1 (DV009). Out now. Paul Robson, Lishay Bachar, Purple Tape, Saporta. Four yards, one wall. Keep it real, stay true to your sound.">
+<meta property="og:title" content="KEEP IT YARD VOL.1 · OUT NOW">
+<meta property="og:description" content="DV009. Four yards, one wall. Paul Robson, Lishay Bachar, Purple Tape, Saporta.">
 <meta property="og:url" content="https://www.desertvision.it">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://www.desertvision.it/assets/og.jpg">
+<meta property="og:type" content="music.album">
+<meta property="og:image" content="https://www.desertvision.it/assets/dv009/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#141311">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://www.desertvision.it/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23141311'/%3E%3Cg stroke='%23E9E3D6' stroke-width='2.4' fill='none' stroke-linecap='round'%3E%3Cpath d='M12 30 C20 18 44 18 52 30'/%3E%3Cpath d='M12 33 C20 45 44 45 52 33'/%3E%3Ccircle cx='32' cy='31.5' r='8.5'/%3E%3C/g%3E%3Cpath d='M32 24 C33 29 34 30 39 31.5 C34 33 33 34 32 39 C31 34 30 33 25 31.5 C30 30 31 29 32 24 Z' fill='%23C17F4A'/%3E%3Crect x='41' y='40' width='2.2' height='8' rx='1' fill='%237B5EA7'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://w.soundcloud.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/dv009/cover.webp" fetchpriority="high">
+
+<script>document.documentElement.className='js';</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"MusicAlbum",
+  "name":"Keep It Yard, Vol. 1",
+  "catalogNumber":"DV009",
+  "datePublished":"2026-07-31",
+  "albumProductionType":"https://schema.org/CompilationAlbum",
+  "image":"https://www.desertvision.it/assets/dv009/og.jpg",
+  "url":"https://www.desertvision.it/",
+  "byArtist":{"@type":"MusicGroup","name":"Various Artists"},
+  "recordLabel":{"@type":"Organization","name":"Desert Vision","url":"https://www.desertvision.it/"},
+  "numTracks":4,
+  "track":[
+    {"@type":"MusicRecording","name":"Menace","position":1,"byArtist":{"@type":"MusicGroup","name":"Paul Robson"}},
+    {"@type":"MusicRecording","name":"Let's Go","position":2,"byArtist":{"@type":"MusicGroup","name":"Lishay Bachar"}},
+    {"@type":"MusicRecording","name":"Tomo Nota","position":3,"byArtist":{"@type":"MusicGroup","name":"Purple Tape"}},
+    {"@type":"MusicRecording","name":"Creativitat","position":4,"byArtist":{"@type":"MusicGroup","name":"Saporta"}}
+  ]
+}
+</script>
+
 <style>
 /* ============ TOKENS · KEEP IT YARD dark system ============
    ink       #141311   warm charcoal concrete (the wall)
    ink-deep  #0C0B0A   shadow / depth
    cream     #E9E3D6   paint / paper
    cream-mut #968F82   secondary text
-   violet    #7B5EA7   Adriatic violet  (Purple Tape — the one accent)
-   teal      #4A7C6F   oxidized teal     (throwup only)
-   copper    #C17F4A   warm copper       (throwup only)
+   violet    #7B5EA7   Adriatic violet   (Purple Tape) = THE page accent
+   teal      #4A7C6F   oxidized teal     (per-track only: 02)
+   copper    #C17F4A   warm copper       (per-track only: 03, 04)
+
+   Documented exception to one-accent: each track owns a colour in the
+   codified campaign system. Track colours appear ONLY on their own pillar.
+   Every interactive/brand element on the page stays violet.
+
+   Shape lock: radius 0 everywhere. Theme lock: dark, no section inverts.
 ============================================================ */
 :root{
   --ink:#141311;
@@ -37,8 +75,12 @@
   --copper:#C17F4A;
   --grotesk:'Space Grotesk',system-ui,sans-serif;
   --mono:'Space Mono',ui-monospace,monospace;
+  --pad:clamp(16px,3vw,36px);
+  --z-grain:60;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
 body{
   font-family:var(--grotesk);
   background:var(--ink);
@@ -48,35 +90,54 @@ body{
 }
 ::selection{background:var(--violet);color:var(--cream);}
 a{color:inherit;}
+img{max-width:100%;display:block;}
 :focus-visible{outline:3px solid var(--violet);outline-offset:3px;}
 
 /* concrete grain over the whole wall */
 body::before{
   content:"";
-  position:fixed;inset:0;z-index:50;pointer-events:none;
+  position:fixed;inset:0;z-index:var(--z-grain);pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   mix-blend-mode:screen;opacity:.6;
 }
-main{position:relative;z-index:2;}
+
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+section{position:relative;z-index:2;}
+
+/* ---- shared type ---- */
+.h2{
+  font-family:var(--grotesk);font-weight:700;
+  font-size:clamp(30px,5.6vw,60px);line-height:1.02;letter-spacing:-.025em;
+}
+.lede{
+  margin-top:14px;max-width:46ch;
+  font-size:clamp(15px,1.7vw,18px);line-height:1.5;color:var(--cream-mut);
+}
+.meta{
+  font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--cream-mut);
+}
+
+/* ---- scroll reveal (JS only, motion-gated) ---- */
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.js .reveal.in{opacity:1;transform:none;}
 
 /* ============ HERO ============ */
 .hero{
   min-height:100svh;
   display:flex;flex-direction:column;justify-content:space-between;
-  padding:clamp(16px,3vw,36px) clamp(16px,3vw,36px) 0;
+  padding:var(--pad) var(--pad) 0;
   position:relative;overflow:hidden;
   background:
     radial-gradient(ellipse 90% 55% at 72% 6%, rgba(233,227,214,.06), transparent 62%),
-    linear-gradient(165deg, #17150F 0%, var(--ink) 55%, var(--ink-deep) 100%);
+    linear-gradient(165deg,#17150F 0%,var(--ink) 55%,var(--ink-deep) 100%);
 }
-/* the real wall, barely surfacing through the dark */
 .wallbg{
   position:absolute;inset:0;z-index:0;pointer-events:none;
   background:url('assets/outline/wall.jpg') center/cover;
   opacity:.13;filter:saturate(.6) contrast(1.05);
   mix-blend-mode:screen;
 }
-/* faint colored stains bleeding through the concrete */
 .hero::after{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:
@@ -85,139 +146,270 @@ main{position:relative;z-index:2;}
     radial-gradient(circle 200px at 60% 92%, rgba(193,127,74,.14), transparent 70%);
 }
 .topbar{
+  position:relative;z-index:4;
   display:flex;justify-content:space-between;align-items:center;gap:12px;
+  min-height:56px;
   font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--cream-mut);
 }
-.topbar .cat{color:var(--cream-mut);}
+.logo{display:inline-flex;align-items:center;gap:13px;color:var(--cream);text-decoration:none;line-height:1;}
+.logo .mark{height:42px;width:auto;display:block;}
+.logo .wm{font-family:var(--mono);font-size:13px;letter-spacing:.3em;text-transform:lowercase;color:var(--cream);}
 .topbar .cat b{color:var(--violet);font-weight:700;}
 
-/* ============ LOGO (the eye) ============ */
-.logo{
-  display:inline-flex;align-items:center;gap:13px;
-  color:var(--cream);text-decoration:none;line-height:1;
-}
-.logo .mark{height:44px;width:auto;display:block;}
-.logo .wm{
-  font-family:var(--mono);font-size:13px;letter-spacing:.3em;
-  text-transform:lowercase;color:var(--cream);
-}
 /* paint drips running down from the top of the wall */
 .drips{position:absolute;top:0;right:9%;width:34%;height:100%;pointer-events:none;z-index:1;}
-.drip{position:absolute;top:0;width:9px;border-radius:0 0 6px 6px;opacity:.55;}
-.drip::after{
-  content:"";position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);
-  width:13px;height:13px;border-radius:50%;background:inherit;
-}
+.drip{position:absolute;top:0;width:9px;opacity:.55;}
+.drip::after{content:"";position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);width:13px;height:13px;border-radius:50%;background:inherit;}
 .drip.d1{left:8%;height:32vh;background:var(--violet);}
 .drip.d2{left:40%;height:50vh;background:var(--teal);width:6px;}
 .drip.d3{left:68%;height:22vh;background:var(--copper);width:11px;}
 .drip.d4{left:90%;height:40vh;background:var(--violet);width:5px;opacity:.35;}
-@media(max-width:900px){
-  .drips{right:0;width:24%;}
-  .drip.d1,.drip.d4{display:none;}
-  .topbar{font-size:9px;letter-spacing:.1em;flex-wrap:wrap;}
-}
 
-.hero-core{
-  position:relative;z-index:3;
-  display:flex;flex-direction:column;align-items:flex-start;
-  padding:5vh 0 4vh;
-}
-.stencil-eyebrow{
-  font-family:var(--mono);font-size:clamp(10px,1.4vw,13px);
-  letter-spacing:.3em;text-transform:uppercase;
-  color:var(--cream);border:1px solid var(--line);
-  padding:9px 16px;
-  margin-bottom:3.5vh;
-}
-.stencil-eyebrow b{color:var(--violet);font-weight:700;}
+.hero-core{position:relative;z-index:3;display:flex;flex-direction:column;align-items:flex-start;padding:4vh 0 3vh;}
 
-/* ============ WORDMARK (Concrete Cartography plate) ============
-   KEEP IT = the outline (hollow, first line on the wall)
-   YARD    = the fill (two-tone violet/copper, sprayed edge, drips) */
-.wm-hero{width:min(100%,840px);height:auto;display:block;overflow:visible;}
+/* the stamp: sprayed through a stencil, slightly off-square */
+.stamp{
+  display:inline-flex;align-items:baseline;gap:.7em;
+  font-family:var(--mono);font-size:clamp(11px,1.5vw,14px);font-weight:700;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--cream);
+  border:2px solid var(--violet);padding:10px 18px;margin-bottom:3vh;
+  transform:rotate(-1.2deg);background:rgba(123,94,167,.1);
+}
+.stamp .cat{color:var(--violet);}
+
+/* ---- WORDMARK plate: the paint lands on load ----
+   width is capped against viewport HEIGHT too (viewBox ratio 860:545), so the
+   plate never pushes the payoff or the CTA below the fold on short laptops. */
+.wm-hero{width:min(100%,64svh,820px);height:auto;display:block;overflow:visible;}
 .wm-hero .stroke{fill:none;stroke:var(--cream);stroke-width:2;opacity:.92;}
 .wm-hero .stroke-lite{fill:none;stroke:var(--cream);stroke-width:1.6;opacity:.85;}
-
-/* ============ EVIDENCE STRIP (real frames from the campaign) ============ */
-.objects{
-  margin-top:4.5vh;
-  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
-  max-width:760px;width:100%;
-}
-.objects .ob{
-  position:relative;overflow:hidden;aspect-ratio:1;
-  border:1px solid var(--line);background:var(--ink-deep);
-}
-.objects .ob img{
-  display:block;width:100%;height:100%;object-fit:cover;
-  filter:saturate(.85);transition:transform .5s ease;
-}
-.objects .ob:hover img{transform:scale(1.05);}
-.objects .ob i{
-  position:absolute;bottom:8px;left:8px;font-style:normal;
-  font-family:var(--mono);font-size:9px;letter-spacing:.16em;
-  color:var(--cream);background:rgba(20,19,17,.68);padding:3px 7px;
-}
-@media(max-width:640px){.objects{grid-template-columns:repeat(2,1fr);}}
+.wm-hero .dripline{transform-origin:center top;}
 
 .payoff{
-  margin-top:4.5vh;max-width:20ch;
-  font-family:var(--grotesk);font-weight:500;
-  font-size:clamp(20px,3.4vw,34px);line-height:1.12;
-  color:var(--cream);
+  margin-top:4vh;max-width:22ch;
+  font-weight:500;font-size:clamp(19px,3vw,31px);line-height:1.14;color:var(--cream);
 }
 .payoff .b{color:var(--violet);}
 
-.cta-row{margin-top:4.5vh;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.cta-row{margin-top:4vh;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
 .cta{
   font-family:var(--mono);font-size:12px;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;
-  text-decoration:none;
-  padding:15px 24px;
-  border:2px solid var(--cream);
-  transition:transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease;
-  display:inline-block;
-  background:transparent;color:var(--cream);box-shadow:5px 5px 0 var(--violet);
+  letter-spacing:.2em;text-transform:uppercase;text-decoration:none;
+  padding:16px 26px;border:2px solid var(--cream);
+  display:inline-block;white-space:nowrap;
+  background:var(--cream);color:var(--ink);box-shadow:6px 6px 0 var(--violet);
+  transition:transform .12s ease,box-shadow .12s ease;
 }
-.cta:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--violet);background:var(--cream);color:var(--ink);}
-.cta.ghost{border-color:var(--violet);color:var(--cream);box-shadow:5px 5px 0 var(--copper);}
-.cta.ghost:hover{box-shadow:8px 8px 0 var(--copper);background:var(--violet);color:var(--cream);}
-.cta-note{
-  font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--cream-mut);
-}
-.cta-note b{color:var(--cream);font-weight:700;}
+.cta:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--violet);}
+.cta:active{transform:translate(1px,1px);box-shadow:4px 4px 0 var(--violet);}
+.cta.ghost{background:transparent;color:var(--cream);border-color:var(--violet);box-shadow:6px 6px 0 rgba(123,94,167,.35);}
+.cta.ghost:hover{background:var(--violet);color:var(--cream);box-shadow:9px 9px 0 rgba(123,94,167,.35);}
 
-/* ============ TAPE MARQUEE (bottom edge) ============ */
+/* ---- TAPE MARQUEE (one per page) ---- */
 .tape{
   background:var(--cream);color:var(--ink);
   overflow:hidden;white-space:nowrap;
   transform:rotate(-.6deg) scale(1.04);
-  position:relative;z-index:4;
-  margin:0 calc(clamp(16px,3vw,36px) * -1);
+  position:relative;z-index:4;margin:0 calc(var(--pad) * -1);
 }
 .tape-inner{
   display:inline-block;
   font-family:var(--mono);font-size:13px;font-weight:700;
-  letter-spacing:.3em;text-transform:uppercase;
-  padding:12px 0;
+  letter-spacing:.3em;text-transform:uppercase;padding:12px 0;
   animation:slide 28s linear infinite;
 }
 .tape-inner .sep{color:var(--violet);margin:0 1.2em;}
 @keyframes slide{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
+@media(max-width:900px){
+  .drips{right:0;width:24%;}
+  .drip.d1,.drip.d4{display:none;}
+  .topbar{font-size:9px;letter-spacing:.1em;}
+  .logo .wm{display:none;}
+}
+
+/* ============ 02 · THE RECORD (split: cover + player) ============ */
+.record{padding:clamp(64px,10vw,120px) 0 clamp(48px,7vw,80px);}
+.record-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,52px);align-items:start;}
+.sleeve{position:relative;}
+.sleeve img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--line);}
+.credit{margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-mut);line-height:1.9;}
+.credit b{color:var(--cream);font-weight:700;}
+.player{position:relative;}
+.player-frame{border:1px solid var(--line);background:var(--ink-deep);padding:10px;}
+.player iframe{display:block;width:100%;height:400px;border:0;}
+.player-hint{margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-mut);}
+@media(max-width:860px){
+  .record-grid{grid-template-columns:1fr;}
+  .sleeve{max-width:420px;}
+  .player iframe{height:340px;}
+}
+
+/* ============ 03 · THE WALL (four pillars, playable) ============ */
+.wall{padding:clamp(48px,7vw,80px) 0 clamp(56px,8vw,96px);}
+.wall-head{margin-bottom:clamp(28px,4vw,44px);}
+.pillars{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.4vw,18px);
+}
+.pillar{
+  --accent:var(--violet);
+  position:relative;display:block;width:100%;text-align:left;
+  background:var(--ink-deep);border:1px solid var(--line);
+  padding:0;cursor:pointer;font:inherit;color:inherit;
+  transition:border-color .25s ease,transform .25s cubic-bezier(.16,1,.3,1);
+}
+/* the pillar is a <button>: every child span has to be told to be a block */
+.pillar .shot,.pillar .info,.pillar .title,.pillar .who{display:block;}
+.pillar .shot{position:relative;overflow:hidden;aspect-ratio:9/16;}
+.pillar .shot img{width:100%;height:100%;object-fit:cover;filter:saturate(.8) brightness(.82);transition:filter .35s ease,transform .5s cubic-bezier(.16,1,.3,1);}
+.pillar .shot::after{
+  content:"";position:absolute;inset:auto 0 0 0;height:45%;
+  background:linear-gradient(to top,rgba(12,11,10,.9),transparent);
+}
+.pillar .num{
+  position:absolute;top:10px;left:10px;z-index:2;
+  font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;
+  color:var(--cream);background:rgba(12,11,10,.72);padding:4px 8px;
+}
+.pillar .info{position:relative;z-index:2;padding:14px 14px 16px;border-top:3px solid var(--accent);}
+.pillar .title{font-weight:700;font-size:clamp(16px,1.9vw,22px);line-height:1.1;letter-spacing:-.02em;}
+.pillar .who{margin-top:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-mut);line-height:1.7;}
+.pillar .who .city{color:var(--accent);}
+.pillar:hover,.pillar:focus-visible{border-color:var(--accent);transform:translateY(-6px);}
+.pillar:hover .shot img,.pillar:focus-visible .shot img{filter:saturate(1) brightness(1);transform:scale(1.04);}
+/* real semantic state: this yard is playing right now */
+.pillar[aria-current="true"]{border-color:var(--accent);}
+.pillar[aria-current="true"] .shot img{filter:saturate(1) brightness(1);}
+.pillar[aria-current="true"] .info{background:color-mix(in srgb,var(--accent) 16%,transparent);}
+.pillar .state{
+  display:none;margin-top:9px;
+  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);
+}
+.pillar[aria-current="true"] .state{display:block;}
+.pillar[aria-current="true"] .state span{display:inline-block;animation:blip 1.6s ease-in-out infinite;}
+@keyframes blip{0%,100%{opacity:1;}50%{opacity:.35;}}
+
+.p1{--accent:var(--violet);}
+.p2{--accent:var(--teal);}
+.p3{--accent:var(--copper);}
+.p4{--accent:var(--copper);}
+.p4 .info{border-image:linear-gradient(90deg,var(--copper),var(--violet)) 1;border-top-width:3px;border-top-style:solid;}
+
+@media(max-width:860px){
+  .pillars{
+    display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+    margin:0 calc(var(--pad) * -1);padding:0 var(--pad) 8px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  }
+  .pillars::-webkit-scrollbar{display:none;}
+  .pillar{flex:0 0 72%;scroll-snap-align:center;}
+  .pillar:hover{transform:none;}
+}
+
+/* ============ 04 · ONE WALL (full-bleed band) ============ */
+.band{padding:0 0 clamp(56px,8vw,96px);}
+.band figure{margin:0;}
+.band-media{position:relative;overflow:hidden;background:var(--ink-deep);}
+.band-media img{width:100%;height:auto;filter:saturate(.85) contrast(1.02);}
+.band-media::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(20,19,17,.35),transparent 22%,transparent 72%,rgba(20,19,17,.75));
+}
+.band figcaption{margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-mut);}
+.band figcaption b{color:var(--cream);font-weight:700;}
+
+/* ============ 05 · WHERE TO GET IT ============ */
+.get{padding:0 0 clamp(56px,8vw,96px);}
+.get-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(24px,4vw,56px);align-items:start;}
+.dests{margin-top:4px;}
+.dest{
+  display:flex;align-items:center;gap:16px;
+  padding:20px 4px;text-decoration:none;
+  border-bottom:1px solid var(--line);
+  transition:padding-left .22s cubic-bezier(.16,1,.3,1),border-color .22s ease;
+}
+.dest:last-child{border-bottom:0;}
+.dest:hover,.dest:focus-visible{padding-left:14px;border-color:var(--violet);}
+.dest .ico{width:24px;height:24px;flex:0 0 24px;opacity:.8;transition:opacity .22s ease;}
+.dest:hover .ico{opacity:1;}
+.dest .name{font-weight:700;font-size:clamp(17px,2vw,21px);letter-spacing:-.01em;}
+.dest .act{
+  margin-left:auto;display:flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-mut);
+}
+.dest:hover .act{color:var(--violet);}
+.dest .arrow{font-family:var(--mono);font-size:15px;transition:transform .22s cubic-bezier(.16,1,.3,1);}
+.dest:hover .arrow{transform:translateX(5px);}
+.dest.soon{cursor:default;opacity:.55;}
+.dest.soon:hover{padding-left:4px;border-color:var(--line);}
+.dest.soon .act{color:var(--cream-mut);}
+@media(max-width:860px){
+  .get-grid{grid-template-columns:1fr;}
+  .dest .name{font-size:18px;}
+  .dest .act span:first-child{display:none;}
+}
+
+/* ============ 06 · THE LABEL + FOOTER ============ */
+.label{
+  border-top:1px solid var(--line);
+  padding:clamp(48px,7vw,88px) 0 clamp(32px,4vw,48px);
+  background:linear-gradient(180deg,transparent,rgba(12,11,10,.7));
+}
+.label-inner{max-width:56ch;}
+.label p{margin-top:16px;font-size:clamp(15px,1.7vw,18px);line-height:1.6;color:var(--cream-mut);}
+.label p b{color:var(--cream);font-weight:500;}
+.label .cta-row{margin-top:32px;}
+.foot{
+  margin-top:clamp(40px,6vw,72px);padding-top:24px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-mut);
+}
+.foot nav{display:flex;gap:22px;flex-wrap:wrap;}
+.foot a{text-decoration:none;}
+.foot a:hover{color:var(--violet);}
+
+/* ============ MOTION: the paint lands (storytelling, on load only) ============ */
+@media(prefers-reduced-motion:no-preference){
+  .js .wm-hero .kw{animation:kw-in .5s cubic-bezier(.16,1,.3,1) .05s both;}
+  .js .wm-hero .paint{animation:paint-rise 1s cubic-bezier(.22,1,.36,1) .3s both;}
+  .js .wm-hero .yw{animation:kw-in .5s cubic-bezier(.16,1,.3,1) .2s both;}
+  .js .wm-hero .dripline{animation:drip-run .55s cubic-bezier(.33,1,.68,1) both;}
+  .js .wm-hero .dripline:nth-of-type(1){animation-delay:1.05s;}
+  .js .wm-hero .dripline:nth-of-type(2){animation-delay:1.22s;}
+  .js .wm-hero .dripline:nth-of-type(3){animation-delay:1.12s;}
+  .js .wm-hero .dripline:nth-of-type(4){animation-delay:1.3s;}
+  .js .stamp{animation:stamp-in .32s cubic-bezier(.34,1.4,.64,1) 1.15s both;}
+  .js .hero .payoff,.js .hero .cta-row{animation:kw-in .6s cubic-bezier(.16,1,.3,1) both;}
+  .js .hero .payoff{animation-delay:1.3s;}
+  .js .hero .cta-row{animation-delay:1.42s;}
+}
+@keyframes kw-in{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+@keyframes paint-rise{from{transform:translateY(340px);}to{transform:translateY(0);}}
+@keyframes drip-run{from{transform:scaleY(0);}to{transform:scaleY(1);}}
+@keyframes stamp-in{from{opacity:0;transform:rotate(-9deg) scale(1.22);}to{opacity:1;transform:rotate(-1.2deg) scale(1);}}
+
 @media(prefers-reduced-motion:reduce){
   .tape-inner{animation:none;}
-  .cta:hover{transform:none;}
+  .cta:hover,.pillar:hover{transform:none;}
+  .pillar[aria-current="true"] .state span{animation:none;}
+  .js .reveal{opacity:1;transform:none;transition:none;}
 }
 </style>
 </head>
 <body>
 
+<!-- ─────────────────────────────────────────────────────────────
+     RELEASE LINKS · swap these four hrefs when a URL changes.
+       Spotify      → id="lnk-spotify"
+       Apple Music  → id="lnk-apple"
+       SoundCloud   → id="lnk-soundcloud"   (live)
+       Beatport     → id="lnk-beatport"     (label page until the release URL exists)
+     ───────────────────────────────────────────────────────────── -->
+
 <main>
 
+<!-- ═══════ 01 · HERO ═══════ -->
 <header class="hero">
   <div class="wallbg" aria-hidden="true"></div>
   <div class="drips" aria-hidden="true">
@@ -225,7 +417,7 @@ main{position:relative;z-index:2;}
   </div>
 
   <div class="topbar">
-    <a class="logo" href="/" aria-label="Desert Vision">
+    <a class="logo" href="/" aria-label="Desert Vision, home">
       <svg class="mark" viewBox="52 92 296 190" aria-hidden="true">
         <g stroke="currentColor" stroke-width="9" stroke-linecap="round" fill="none">
           <path d="M 78,163 C 120,105 280,105 322,163"/>
@@ -242,14 +434,14 @@ main{position:relative;z-index:2;}
       </svg>
       <span class="wm">desert vision</span>
     </a>
-    <span class="cat">DV009 · <b>31.07.2026</b></span>
+    <span class="cat">Various Artists · <b>DV009</b></span>
   </div>
 
   <div class="hero-core">
-    <span class="stencil-eyebrow">Various Artists · Vol.1 · <b>DV009</b></span>
+    <span class="stamp">Out now<span class="cat">31.07.2026</span></span>
 
     <h1 style="margin:0">
-      <svg class="wm-hero" viewBox="0 0 860 545" role="img" aria-label="KEEP IT YARD">
+      <svg class="wm-hero" viewBox="0 0 860 545" role="img" aria-label="Keep It Yard">
         <defs>
           <clipPath id="yardclip">
             <text x="4" y="444" font-family="Space Grotesk" font-size="330"
@@ -266,51 +458,282 @@ main{position:relative;z-index:2;}
         </defs>
 
         <!-- the outline: first line on the wall -->
-        <text class="stroke-lite" x="4" y="160" font-family="Space Grotesk"
+        <text class="stroke-lite kw" x="4" y="160" font-family="Space Grotesk"
           font-size="185" font-weight="700" letter-spacing="-3">KEEP IT</text>
 
-        <!-- the fill: two-tone, sprayed edge -->
-        <g clip-path="url(#yardclip)" filter="url(#sprayedge)">
-          <rect x="0" y="170" width="860" height="300" fill="url(#yardfill)"/>
+        <!-- the fill: paint rises into the letters -->
+        <g clip-path="url(#yardclip)">
+          <g class="paint" filter="url(#sprayedge)">
+            <rect x="0" y="170" width="860" height="340" fill="url(#yardfill)"/>
+          </g>
         </g>
-        <!-- controlled drips -->
-        <g fill="#7B5EA7">
-          <rect x="62"  y="446" width="6" height="58" rx="3"/>
-          <rect x="258" y="448" width="5" height="40" rx="2.5"/>
-          <rect x="516" y="446" width="6" height="70" rx="3"/>
-          <rect x="694" y="448" width="5" height="46" rx="2.5"/>
-        </g>
+
+        <!-- controlled drips, running after the fill lands -->
+        <rect class="dripline" x="62"  y="446" width="6" height="58" fill="#7B5EA7"/>
+        <rect class="dripline" x="258" y="448" width="5" height="40" fill="#7B5EA7"/>
+        <rect class="dripline" x="516" y="446" width="6" height="70" fill="#7B5EA7"/>
+        <rect class="dripline" x="694" y="448" width="5" height="46" fill="#7B5EA7"/>
+
         <!-- the outline over the fill -->
-        <text class="stroke" x="4" y="444" font-family="Space Grotesk"
+        <text class="stroke yw" x="4" y="444" font-family="Space Grotesk"
           font-size="330" font-weight="700" letter-spacing="-8">YARD</text>
       </svg>
     </h1>
 
-    <div class="objects" aria-label="Evidence from the four yards">
-      <span class="ob"><img src="assets/outline/tile_can.jpg" alt="Crushed spray can with violet cap on concrete" loading="lazy"><i>01</i></span>
-      <span class="ob"><img src="assets/outline/tile_freccia.jpg" alt="Arrow carved into teal plaster" loading="lazy"><i>02</i></span>
-      <span class="ob"><img src="assets/outline/tile_chiave.jpg" alt="Old key embedded in concrete" loading="lazy"><i>03</i></span>
-      <span class="ob"><img src="assets/outline/tile_corda.jpg" alt="Bleached rope with a violet mark" loading="lazy"><i>04</i></span>
-    </div>
-
-    <p class="payoff">Four yards, one wall.<br>Keep it real —<br><span class="b">stay true to your sound.</span></p>
+    <p class="payoff">Four yards, one wall.<br>Keep it real,<br><span class="b">stay true to your sound.</span></p>
 
     <div class="cta-row">
-      <a class="cta" href="https://www.instagram.com/desertvision_music/" target="_blank" rel="noopener">Follow the drop</a>
-      <span class="cta-note">Out <b>31.07</b> — all platforms</span>
+      <a class="cta" href="#listen">Play the record</a>
+      <a class="cta ghost" href="#get">All platforms</a>
     </div>
   </div>
 
   <div class="tape" aria-hidden="true">
     <div class="tape-inner">
-      FRESH PAINT <span class="sep">■</span> DO NOT TOUCH <span class="sep">■</span> KEEP IT YARD <span class="sep">■</span> DV009 <span class="sep">■</span>
-      FRESH PAINT <span class="sep">■</span> DO NOT TOUCH <span class="sep">■</span> KEEP IT YARD <span class="sep">■</span> DV009 <span class="sep">■</span>
-      FRESH PAINT <span class="sep">■</span> DO NOT TOUCH <span class="sep">■</span> KEEP IT YARD <span class="sep">■</span> DV009 <span class="sep">■</span>
+      FRESH PAINT <span class="sep">■</span> OUT NOW <span class="sep">■</span> KEEP IT YARD VOL.1 <span class="sep">■</span> DV009 <span class="sep">■</span>
+      FRESH PAINT <span class="sep">■</span> OUT NOW <span class="sep">■</span> KEEP IT YARD VOL.1 <span class="sep">■</span> DV009 <span class="sep">■</span>
+      FRESH PAINT <span class="sep">■</span> OUT NOW <span class="sep">■</span> KEEP IT YARD VOL.1 <span class="sep">■</span> DV009 <span class="sep">■</span>
     </div>
   </div>
 </header>
 
+<!-- ═══════ 02 · THE RECORD ═══════ -->
+<section class="record" id="listen" aria-label="Listen to the record">
+  <div class="wrap">
+    <div class="record-grid">
+      <div class="sleeve reveal">
+        <img src="assets/dv009/cover.webp" width="1100" height="1100"
+             alt="Keep It Yard Vol.1 cover: the words KEEP IT YARD bombed in violet, teal and copper on a weathered concrete wall, stencilled DESERT VISION DV009 below."
+             fetchpriority="high" decoding="async">
+        <p class="credit">
+          <b>Keep It Yard, Vol. 1</b><br>
+          Various Artists<br>
+          Desert Vision · DV009<br>
+          31.07.2026
+        </p>
+      </div>
+
+      <div class="player reveal">
+        <div class="player-frame">
+          <iframe id="sc-player" title="Keep It Yard Vol.1 on SoundCloud"
+            allow="autoplay" loading="lazy" scrolling="no" frameborder="no"
+            src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F2269402238&color=%237b5ea7&visual=false&show_artwork=false&show_user=true&sharing=true&buying=true&download=false&show_teaser=false"></iframe>
+        </div>
+        <p class="player-hint">Full record, four tracks, streaming free on SoundCloud.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 03 · THE WALL ═══════ -->
+<section class="wall" aria-label="The four tracks">
+  <div class="wrap">
+    <div class="wall-head reveal">
+      <h2 class="h2">Four yards.<br>One wall.</h2>
+      <p class="lede">Every artist brought a piece of their city and put it on the same concrete. Tap a yard to play its track.</p>
+    </div>
+
+    <div class="pillars" id="pillars">
+      <button class="pillar p1 reveal" type="button" data-track="menace" data-index="0" aria-current="false">
+        <span class="shot"><span class="num">01</span>
+          <img src="assets/dv009/p1.webp" width="720" height="1280" loading="lazy" decoding="async"
+               alt="MENACE bombed in violet on a concrete pillar, stencilled PAUL ROBSON below."></span>
+        <span class="info">
+          <span class="title">Menace</span>
+          <span class="who">Paul Robson<br><span class="city">Boston</span></span>
+          <span class="state"><span>Playing</span></span>
+        </span>
+      </button>
+
+      <button class="pillar p2 reveal" type="button" data-track="let's go" data-index="1" aria-current="false">
+        <span class="shot"><span class="num">02</span>
+          <img src="assets/dv009/p2.webp" width="720" height="1280" loading="lazy" decoding="async"
+               alt="LET'S GO bombed in oxidized teal on a concrete pillar, stencilled LISHAY BACHAR below."></span>
+        <span class="info">
+          <span class="title">Let's Go</span>
+          <span class="who">Lishay Bachar<br><span class="city">Tel Aviv</span></span>
+          <span class="state"><span>Playing</span></span>
+        </span>
+      </button>
+
+      <button class="pillar p3 reveal" type="button" data-track="tomo nota" data-index="2" aria-current="false">
+        <span class="shot"><span class="num">03</span>
+          <img src="assets/dv009/p3.webp" width="720" height="1280" loading="lazy" decoding="async"
+               alt="TOMO NOTA bombed in warm copper on a concrete pillar, stencilled PURPLE TAPE below."></span>
+        <span class="info">
+          <span class="title">Tomo Nota</span>
+          <span class="who">Purple Tape<br><span class="city">Ancona</span></span>
+          <span class="state"><span>Playing</span></span>
+        </span>
+      </button>
+
+      <button class="pillar p4 reveal" type="button" data-track="creativitat" data-index="3" aria-current="false">
+        <span class="shot"><span class="num">04</span>
+          <img src="assets/dv009/p4.webp" width="720" height="1280" loading="lazy" decoding="async"
+               alt="CREATIVITAT bombed in copper and violet on a concrete pillar, stencilled SAPORTA below."></span>
+        <span class="info">
+          <span class="title">Creativitat</span>
+          <span class="who">Saporta<br><span class="city">Valencia</span></span>
+          <span class="state"><span>Playing</span></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 04 · ONE WALL (full-bleed) ═══════ -->
+<section class="band" aria-label="The wall">
+  <figure class="reveal">
+    <div class="band-media">
+      <img src="assets/dv009/wall.webp" width="1800" height="1005" loading="lazy" decoding="async"
+           alt="Four concrete pillars under a viaduct, each bombed with one track from the record: Menace, Let's Go, Tomo Nota, Creativitat.">
+    </div>
+    <div class="wrap"><figcaption>Boston, Tel Aviv, Ancona, Valencia. <b>One record.</b></figcaption></div>
+  </figure>
+</section>
+
+<!-- ═══════ 05 · WHERE TO GET IT ═══════ -->
+<section class="get" id="get" aria-label="Where to get the record">
+  <div class="wrap">
+    <div class="get-grid">
+      <div class="reveal">
+        <h2 class="h2">Take it<br>with you.</h2>
+        <p class="lede">Stream it, or buy it and play it out. Four tracks, digital only.</p>
+      </div>
+
+      <div class="dests reveal">
+        <a class="dest" id="lnk-spotify" href="https://open.spotify.com/search/Keep%20It%20Yard%20Desert%20Vision" target="_blank" rel="noopener">
+          <img class="ico" src="https://cdn.simpleicons.org/spotify/E9E3D6" alt="" width="24" height="24" loading="lazy" onerror="this.remove()">
+          <span class="name">Spotify</span>
+          <span class="act"><span>Stream</span><span class="arrow">&rarr;</span></span>
+        </a>
+
+        <a class="dest" id="lnk-apple" href="https://music.apple.com/search?term=Keep%20It%20Yard%20Desert%20Vision" target="_blank" rel="noopener">
+          <img class="ico" src="https://cdn.simpleicons.org/applemusic/E9E3D6" alt="" width="24" height="24" loading="lazy" onerror="this.remove()">
+          <span class="name">Apple Music</span>
+          <span class="act"><span>Stream</span><span class="arrow">&rarr;</span></span>
+        </a>
+
+        <a class="dest" id="lnk-soundcloud" href="https://soundcloud.com/desert-vision/sets/keep-it-yard-vol-1" target="_blank" rel="noopener">
+          <img class="ico" src="https://cdn.simpleicons.org/soundcloud/E9E3D6" alt="" width="24" height="24" loading="lazy" onerror="this.remove()">
+          <span class="name">SoundCloud</span>
+          <span class="act"><span>Stream</span><span class="arrow">&rarr;</span></span>
+        </a>
+
+        <a class="dest" id="lnk-beatport" href="https://www.beatport.com/label/desert-vision/112355" target="_blank" rel="noopener">
+          <img class="ico" src="https://cdn.simpleicons.org/beatport/E9E3D6" alt="" width="24" height="24" loading="lazy" onerror="this.remove()">
+          <span class="name">Beatport</span>
+          <span class="act"><span>Buy</span><span class="arrow">&rarr;</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 06 · THE LABEL ═══════ -->
+<section class="label" aria-label="About Desert Vision">
+  <div class="wrap">
+    <div class="label-inner reveal">
+      <h2 class="h2">Desert Vision.</h2>
+      <p>Independent electronic label out of Ancona, running since 2023. Nine releases, artists from Boston to Tel Aviv to Valencia.</p>
+      <p><b>Keep It Yard</b> is the series where the label leaves the desert and takes the street. Vol.1 is the first wall.</p>
+      <div class="cta-row">
+        <a class="cta ghost" href="https://www.instagram.com/desertvision_music/" target="_blank" rel="noopener">Follow the label</a>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span>&copy; 2026 Desert Vision · Ancona</span>
+      <nav aria-label="Desert Vision elsewhere">
+        <a href="https://www.instagram.com/desertvision_music/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://soundcloud.com/desert-vision" target="_blank" rel="noopener">SoundCloud</a>
+        <a href="https://www.beatport.com/label/desert-vision/112355" target="_blank" rel="noopener">Beatport</a>
+        <a href="mailto:info@desertvision.it">Contact</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
 </main>
+
+<script src="https://w.soundcloud.com/player/api.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ---- scroll reveal (IntersectionObserver, never a scroll listener) ---- */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    reveals.forEach(function (el, i) {
+      el.style.transitionDelay = (Math.min(i % 4, 3) * 70) + 'ms';
+      io.observe(el);
+    });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---- the wall drives the player: tap a pillar, that yard plays ---- */
+  var iframe  = document.getElementById('sc-player');
+  var pillars = Array.prototype.slice.call(document.querySelectorAll('.pillar'));
+  if (!iframe || !pillars.length || typeof SC === 'undefined' || !SC.Widget) return;
+
+  var widget = SC.Widget(iframe);
+  var byTitle = {};     // normalised track title -> playlist index
+  var ready = false;
+
+  function norm(s) { return String(s).toLowerCase().replace(/[^a-z0-9]/g, ''); }
+
+  function setActive(index) {
+    pillars.forEach(function (p) {
+      p.setAttribute('aria-current', String(indexOf(p) === index));
+    });
+  }
+  function clearActive() {
+    pillars.forEach(function (p) { p.setAttribute('aria-current', 'false'); });
+  }
+  /* prefer the index resolved from the real playlist; fall back to the declared one */
+  function indexOf(pillar) {
+    var resolved = byTitle[norm(pillar.dataset.track)];
+    return typeof resolved === 'number' ? resolved : parseInt(pillar.dataset.index, 10);
+  }
+
+  widget.bind(SC.Widget.Events.READY, function () {
+    ready = true;
+    widget.getSounds(function (sounds) {
+      (sounds || []).forEach(function (s, i) {
+        if (s && s.title) byTitle[norm(s.title)] = i;
+      });
+    });
+  });
+
+  widget.bind(SC.Widget.Events.PLAY, function () {
+    widget.getCurrentSoundIndex(function (i) { setActive(i); });
+  });
+  widget.bind(SC.Widget.Events.PAUSE, clearActive);
+  widget.bind(SC.Widget.Events.FINISH, clearActive);
+
+  pillars.forEach(function (pillar) {
+    pillar.addEventListener('click', function () {
+      if (!ready) { document.getElementById('listen').scrollIntoView({ block: 'center' }); return; }
+      var i = indexOf(pillar);
+      widget.skip(i);          // widget messages are queued in order, so skip lands first
+      widget.play();
+      setActive(i);
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.getElementById('listen').scrollIntoView({
+        behavior: reduce ? 'auto' : 'smooth', block: 'center'
+      });
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
