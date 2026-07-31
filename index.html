@@ -90,7 +90,10 @@ body{
 }
 ::selection{background:var(--violet);color:var(--cream);}
 a{color:inherit;}
-img{max-width:100%;display:block;}
+/* height:auto is load-bearing: the width/height attributes on every <img> are
+   presentational hints, so without it a CSS width:100% leaves the attribute
+   height intact and the image renders stretched. */
+img{max-width:100%;height:auto;display:block;}
 :focus-visible{outline:3px solid var(--violet);outline-offset:3px;}
 
 /* concrete grain over the whole wall */
@@ -167,6 +170,7 @@ section{position:relative;z-index:2;}
 .drip.d4{left:90%;height:40vh;background:var(--violet);width:5px;opacity:.35;}
 
 .hero-core{position:relative;z-index:3;display:flex;flex-direction:column;align-items:flex-start;padding:4vh 0 3vh;}
+.hero-core h1{width:100%;display:block;}
 
 /* the stamp: sprayed through a stencil, slightly off-square */
 .stamp{
@@ -181,10 +185,10 @@ section{position:relative;z-index:2;}
 /* ---- WORDMARK plate: the paint lands on load ----
    width is capped against viewport HEIGHT too (viewBox ratio 860:545), so the
    plate never pushes the payoff or the CTA below the fold on short laptops. */
-.wm-hero{width:min(100%,64svh,820px);height:auto;display:block;overflow:visible;}
+.wm-hero{width:min(100%,48svh,780px);height:auto;display:block;overflow:visible;}
 .wm-hero .stroke{fill:none;stroke:var(--cream);stroke-width:2;opacity:.92;}
 .wm-hero .stroke-lite{fill:none;stroke:var(--cream);stroke-width:1.6;opacity:.85;}
-.wm-hero .dripline{transform-origin:center top;}
+.wm-hero .dripline{transform-box:fill-box;transform-origin:center top;}
 
 .payoff{
   margin-top:4vh;max-width:22ch;
@@ -225,8 +229,9 @@ section{position:relative;z-index:2;}
 @media(max-width:900px){
   .drips{right:0;width:24%;}
   .drip.d1,.drip.d4{display:none;}
-  .topbar{font-size:9px;letter-spacing:.1em;}
+  .topbar{font-size:10px;letter-spacing:.12em;}
   .logo .wm{display:none;}
+  .topbar .cat .va{display:none;}   /* the catalogue number is the only part that has to survive */
 }
 
 /* ============ 02 · THE RECORD (split: cover + player) ============ */
@@ -274,8 +279,7 @@ section{position:relative;z-index:2;}
 }
 .pillar .info{position:relative;z-index:2;padding:14px 14px 16px;border-top:3px solid var(--accent);}
 .pillar .title{font-weight:700;font-size:clamp(16px,1.9vw,22px);line-height:1.1;letter-spacing:-.02em;}
-.pillar .who{margin-top:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-mut);line-height:1.7;}
-.pillar .who .city{color:var(--accent);}
+.pillar .who{margin-top:7px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);line-height:1.6;}
 .pillar:hover,.pillar:focus-visible{border-color:var(--accent);transform:translateY(-6px);}
 .pillar:hover .shot img,.pillar:focus-visible .shot img{filter:saturate(1) brightness(1);transform:scale(1.04);}
 /* real semantic state: this yard is playing right now */
@@ -375,10 +379,10 @@ section{position:relative;z-index:2;}
   .js .wm-hero .paint{animation:paint-rise 1s cubic-bezier(.22,1,.36,1) .3s both;}
   .js .wm-hero .yw{animation:kw-in .5s cubic-bezier(.16,1,.3,1) .2s both;}
   .js .wm-hero .dripline{animation:drip-run .55s cubic-bezier(.33,1,.68,1) both;}
-  .js .wm-hero .dripline:nth-of-type(1){animation-delay:1.05s;}
-  .js .wm-hero .dripline:nth-of-type(2){animation-delay:1.22s;}
-  .js .wm-hero .dripline:nth-of-type(3){animation-delay:1.12s;}
-  .js .wm-hero .dripline:nth-of-type(4){animation-delay:1.3s;}
+  .js .wm-hero .dr1{animation-delay:1.05s;}
+  .js .wm-hero .dr2{animation-delay:1.22s;}
+  .js .wm-hero .dr3{animation-delay:1.12s;}
+  .js .wm-hero .dr4{animation-delay:1.30s;}
   .js .stamp{animation:stamp-in .32s cubic-bezier(.34,1.4,.64,1) 1.15s both;}
   .js .hero .payoff,.js .hero .cta-row{animation:kw-in .6s cubic-bezier(.16,1,.3,1) both;}
   .js .hero .payoff{animation-delay:1.3s;}
@@ -434,7 +438,7 @@ section{position:relative;z-index:2;}
       </svg>
       <span class="wm">desert vision</span>
     </a>
-    <span class="cat">Various Artists · <b>DV009</b></span>
+    <span class="cat"><span class="va">Various Artists · </span><b>DV009</b></span>
   </div>
 
   <div class="hero-core">
@@ -447,9 +451,13 @@ section{position:relative;z-index:2;}
             <text x="4" y="444" font-family="Space Grotesk" font-size="330"
               font-weight="700" letter-spacing="-8">YARD</text>
           </clipPath>
-          <linearGradient id="yardfill" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0" stop-color="#7B5EA7"/><stop offset=".52" stop-color="#7B5EA7"/>
-            <stop offset=".56" stop-color="#C17F4A"/><stop offset="1" stop-color="#C17F4A"/>
+          <!-- two-tone fill: violet laid first, copper over the top of it.
+               tilted and blended over a wide band so it reads as paint meeting
+               paint, not as a printing error -->
+          <linearGradient id="yardfill" x1=".08" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="#7B5EA7"/><stop offset=".40" stop-color="#7B5EA7"/>
+            <stop offset=".54" stop-color="#9A6F82"/>
+            <stop offset=".68" stop-color="#C17F4A"/><stop offset="1" stop-color="#C17F4A"/>
           </linearGradient>
           <filter id="sprayedge" x="-5%" y="-5%" width="110%" height="110%">
             <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/>
@@ -468,11 +476,20 @@ section{position:relative;z-index:2;}
           </g>
         </g>
 
-        <!-- controlled drips, running after the fill lands -->
-        <rect class="dripline" x="62"  y="446" width="6" height="58" fill="#7B5EA7"/>
-        <rect class="dripline" x="258" y="448" width="5" height="40" fill="#7B5EA7"/>
-        <rect class="dripline" x="516" y="446" width="6" height="70" fill="#7B5EA7"/>
-        <rect class="dripline" x="694" y="448" width="5" height="46" fill="#7B5EA7"/>
+        <!-- controlled drips, running after the fill lands: each one is a
+             run of paint with the bead of wet paint still hanging off the end -->
+        <g class="dripline dr1" fill="#7B5EA7">
+          <rect x="58" y="444" width="14" height="62"/><circle cx="65" cy="509" r="9.5"/>
+        </g>
+        <g class="dripline dr2" fill="#7B5EA7">
+          <rect x="255" y="446" width="11" height="44"/><circle cx="260.5" cy="493" r="7.5"/>
+        </g>
+        <g class="dripline dr3" fill="#7B5EA7">
+          <rect x="512" y="444" width="14" height="74"/><circle cx="519" cy="521" r="9.5"/>
+        </g>
+        <g class="dripline dr4" fill="#7B5EA7">
+          <rect x="691" y="446" width="11" height="50"/><circle cx="696.5" cy="499" r="7.5"/>
+        </g>
 
         <!-- the outline over the fill -->
         <text class="stroke yw" x="4" y="444" font-family="Space Grotesk"
@@ -530,7 +547,7 @@ section{position:relative;z-index:2;}
   <div class="wrap">
     <div class="wall-head reveal">
       <h2 class="h2">Four yards.<br>One wall.</h2>
-      <p class="lede">Every artist brought a piece of their city and put it on the same concrete. Tap a yard to play its track.</p>
+      <p class="lede">Four artists, four yards, one piece of concrete each. Tap a yard to play its track.</p>
     </div>
 
     <div class="pillars" id="pillars">
@@ -540,7 +557,7 @@ section{position:relative;z-index:2;}
                alt="MENACE bombed in violet on a concrete pillar, stencilled PAUL ROBSON below."></span>
         <span class="info">
           <span class="title">Menace</span>
-          <span class="who">Paul Robson<br><span class="city">Boston</span></span>
+          <span class="who">Paul Robson</span>
           <span class="state"><span>Playing</span></span>
         </span>
       </button>
@@ -551,7 +568,7 @@ section{position:relative;z-index:2;}
                alt="LET'S GO bombed in oxidized teal on a concrete pillar, stencilled LISHAY BACHAR below."></span>
         <span class="info">
           <span class="title">Let's Go</span>
-          <span class="who">Lishay Bachar<br><span class="city">Tel Aviv</span></span>
+          <span class="who">Lishay Bachar</span>
           <span class="state"><span>Playing</span></span>
         </span>
       </button>
@@ -562,7 +579,7 @@ section{position:relative;z-index:2;}
                alt="TOMO NOTA bombed in warm copper on a concrete pillar, stencilled PURPLE TAPE below."></span>
         <span class="info">
           <span class="title">Tomo Nota</span>
-          <span class="who">Purple Tape<br><span class="city">Ancona</span></span>
+          <span class="who">Purple Tape</span>
           <span class="state"><span>Playing</span></span>
         </span>
       </button>
@@ -573,7 +590,7 @@ section{position:relative;z-index:2;}
                alt="CREATIVITAT bombed in copper and violet on a concrete pillar, stencilled SAPORTA below."></span>
         <span class="info">
           <span class="title">Creativitat</span>
-          <span class="who">Saporta<br><span class="city">Valencia</span></span>
+          <span class="who">Saporta</span>
           <span class="state"><span>Playing</span></span>
         </span>
       </button>
@@ -588,7 +605,7 @@ section{position:relative;z-index:2;}
       <img src="assets/dv009/wall.webp" width="1800" height="1005" loading="lazy" decoding="async"
            alt="Four concrete pillars under a viaduct, each bombed with one track from the record: Menace, Let's Go, Tomo Nota, Creativitat.">
     </div>
-    <div class="wrap"><figcaption>Boston, Tel Aviv, Ancona, Valencia. <b>One record.</b></figcaption></div>
+    <div class="wrap"><figcaption>Four yards. <b>One record.</b></figcaption></div>
   </figure>
 </section>
 
@@ -620,7 +637,7 @@ section{position:relative;z-index:2;}
           <span class="act"><span>Stream</span><span class="arrow">&rarr;</span></span>
         </a>
 
-        <a class="dest" id="lnk-beatport" href="https://www.beatport.com/label/desert-vision/112355" target="_blank" rel="noopener">
+        <a class="dest" id="lnk-beatport" href="https://www.beatport.com/release/keep-it-yard-vol-1/7202357" target="_blank" rel="noopener">
           <img class="ico" src="https://cdn.simpleicons.org/beatport/E9E3D6" alt="" width="24" height="24" loading="lazy" onerror="this.remove()">
           <span class="name">Beatport</span>
           <span class="act"><span>Buy</span><span class="arrow">&rarr;</span></span>
@@ -635,7 +652,7 @@ section{position:relative;z-index:2;}
   <div class="wrap">
     <div class="label-inner reveal">
       <h2 class="h2">Desert Vision.</h2>
-      <p>Independent electronic label out of Ancona, running since 2023. Nine releases, artists from Boston to Tel Aviv to Valencia.</p>
+      <p>Independent electronic label, running since 2023. Nine releases, a roster that does not sit in one place.</p>
       <p><b>Keep It Yard</b> is the series where the label leaves the desert and takes the street. Vol.1 is the first wall.</p>
       <div class="cta-row">
         <a class="cta ghost" href="https://www.instagram.com/desertvision_music/" target="_blank" rel="noopener">Follow the label</a>
@@ -643,7 +660,7 @@ section{position:relative;z-index:2;}
     </div>
 
     <div class="foot">
-      <span>&copy; 2026 Desert Vision · Ancona</span>
+      <span>&copy; 2026 Desert Vision</span>
       <nav aria-label="Desert Vision elsewhere">
         <a href="https://www.instagram.com/desertvision_music/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://soundcloud.com/desert-vision" target="_blank" rel="noopener">SoundCloud</a>
@@ -685,7 +702,7 @@ section{position:relative;z-index:2;}
   if (!iframe || !pillars.length || typeof SC === 'undefined' || !SC.Widget) return;
 
   var widget = SC.Widget(iframe);
-  var byTitle = {};     // normalised track title -> playlist index
+  var resolved = {};    // data-track key -> real playlist index
   var ready = false;
 
   function norm(s) { return String(s).toLowerCase().replace(/[^a-z0-9]/g, ''); }
@@ -700,15 +717,20 @@ section{position:relative;z-index:2;}
   }
   /* prefer the index resolved from the real playlist; fall back to the declared one */
   function indexOf(pillar) {
-    var resolved = byTitle[norm(pillar.dataset.track)];
-    return typeof resolved === 'number' ? resolved : parseInt(pillar.dataset.index, 10);
+    var key = pillar.dataset.track;
+    return typeof resolved[key] === 'number' ? resolved[key] : parseInt(pillar.dataset.index, 10);
   }
 
   widget.bind(SC.Widget.Events.READY, function () {
     ready = true;
     widget.getSounds(function (sounds) {
-      (sounds || []).forEach(function (s, i) {
-        if (s && s.title) byTitle[norm(s.title)] = i;
+      /* SoundCloud titles carry label and artist too ("Desert Vision - Paul
+         Robson - Menace [Desert Vision]"), so match on containment, not equality. */
+      pillars.forEach(function (p) {
+        var needle = norm(p.dataset.track);
+        (sounds || []).forEach(function (s, i) {
+          if (s && s.title && norm(s.title).indexOf(needle) !== -1) resolved[p.dataset.track] = i;
+        });
       });
     });
   });
