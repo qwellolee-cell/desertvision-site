@@ -76,8 +76,8 @@ section{position:relative;z-index:2}
   letter-spacing:.21em;text-transform:uppercase;color:var(--cream);text-shadow:0 2px 40px rgba(11,10,8,.55)}
 .artist-date{font-family:var(--data);font-size:clamp(11px,1.4vw,13px);letter-spacing:.22em;text-transform:uppercase;
   color:var(--cream-mut);margin-top:3vh}
-.presave{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:3.2vh}
-.presave-dest{font-family:var(--data);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-mut)}
+.presave-lead{margin-top:3.2vh;margin-bottom:12px}
+.presave{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 
 @media(max-width:900px){
   .topbar{font-size:10px;letter-spacing:.1em}
@@ -109,6 +109,8 @@ section{position:relative;z-index:2}
   padding:16px 26px;border:1.5px solid var(--copper);display:inline-block;white-space:nowrap;
   background:transparent;color:var(--cream);box-shadow:6px 6px 0 rgba(217,143,82,.3);transition:transform .12s ease,box-shadow .12s ease}
 .cta.ghost:hover{background:var(--copper);color:var(--ink);box-shadow:9px 9px 0 rgba(217,143,82,.3);transform:translate(-2px,-2px)}
+.cta.ghost.quiet{border-color:var(--cream-mut);box-shadow:6px 6px 0 rgba(150,143,130,.22);color:var(--cream)}
+.cta.ghost.quiet:hover{background:var(--cream);color:var(--ink);box-shadow:9px 9px 0 rgba(150,143,130,.22)}
 .foot{margin-top:clamp(40px,6vw,72px);padding-top:24px;border-top:1px solid var(--line);
   display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
   font-family:var(--data);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-mut)}
@@ -151,9 +153,10 @@ section{position:relative;z-index:2}
     <p class="eyebrow artist-tag">DV010</p>
     <h1 class="artist-name">Andy&lsquo;s Echo</h1>
     <p class="artist-date">9 &middot; 10 &middot; 2026.</p>
+    <p class="eyebrow presave-lead">Pre-save</p>
     <p class="presave">
-      <a class="cta ghost" href="https://hypeddit.com/f2ydln" target="_blank" rel="noopener">Pre-save</a>
-      <span class="presave-dest">Spotify &middot; Apple Music</span>
+      <a class="cta ghost" href="https://hypeddit.com/f2ydln" target="_blank" rel="noopener">Spotify</a>
+      <a class="cta ghost quiet" href="https://hypeddit.com/f2ydln" target="_blank" rel="noopener">Apple Music</a>
     </p>
   </div>
 </header>
@@ -179,7 +182,7 @@ section{position:relative;z-index:2}
   <div class="wrap">
     <div class="label-inner reveal">
       <h2>Desert Vision.</h2>
-      <p>Independent electronic label, running since 2023. Ten releases, a roster that does not sit in one place.</p>
+      <p>Independent electronic label. Ancona, since 2023. Curation before quantity.</p>
       <div class="cta-row">
         <a class="cta ghost" href="https://www.instagram.com/desertvision_music/" target="_blank" rel="noopener">Follow the label</a>
       </div>
