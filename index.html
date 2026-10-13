@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="facebook-domain-verification" content="8foah63wcg6ajkwdkl3gqjqsfc22km" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Desert Vision</title>
-<meta name="description" content="Andy's Echo. 9.10.2026.">
-<meta property="og:title" content="Desert Vision">
-<meta property="og:description" content="Andy's Echo. 9.10.2026.">
+<title>Hollow — Andy's Echo · Desert Vision</title>
+<meta name="description" content="Hollow, a single by Andy's Echo. Out now on Desert Vision. DV010.">
+<meta property="og:title" content="Hollow — Andy's Echo · Desert Vision">
+<meta property="og:description" content="Hollow, a single by Andy's Echo. Out now on Desert Vision.">
 <meta property="og:url" content="https://www.desertvision.it">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://www.desertvision.it/assets/dv010/og-artist.jpg">
+<meta property="og:image" content="https://www.desertvision.it/assets/dv010/og-live.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -20,17 +20,37 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23141311'/%3E%3Cg stroke='%23E9E3D6' stroke-width='2.4' fill='none' stroke-linecap='round'%3E%3Cpath d='M12 30 C20 18 44 18 52 30'/%3E%3Cpath d='M12 33 C20 45 44 45 52 33'/%3E%3Ccircle cx='32' cy='31.5' r='8.5'/%3E%3C/g%3E%3Cpath d='M32 24 C33 29 34 30 39 31.5 C34 33 33 34 32 39 C31 34 30 33 25 31.5 C30 30 31 29 32 24 Z' fill='%23C17F4A'/%3E%3Crect x='41' y='40' width='2.2' height='8' rx='1' fill='%234A9C8A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&family=Unbounded:wght@800&family=Outfit:wght@600&family=Instrument+Serif:ital@1&family=Martian+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="/assets/dv010/hero-artist.webp" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&family=Unbounded:wght@800&family=Instrument+Serif:ital@1&family=Martian+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://w.soundcloud.com">
+<link rel="preload" as="image" href="/assets/dv010/hero-live.webp" fetchpriority="high">
 
 <script>document.documentElement.className='js';</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"MusicAlbum",
+  "name":"Hollow",
+  "catalogNumber":"DV010",
+  "datePublished":"2026-10-09",
+  "albumReleaseType":"https://schema.org/SingleRelease",
+  "image":"https://www.desertvision.it/assets/dv010/og-live.jpg",
+  "url":"https://www.desertvision.it/",
+  "byArtist":{"@type":"MusicGroup","name":"Andy's Echo"},
+  "recordLabel":{"@type":"Organization","name":"Desert Vision","url":"https://www.desertvision.it/"},
+  "numTracks":1,
+  "track":[
+    {"@type":"MusicRecording","name":"Hollow","position":1,"byArtist":{"@type":"MusicGroup","name":"Andy's Echo"}}
+  ]
+}
+</script>
 
 <style>
 :root{
   --ink:#141311; --ink-deep:#0B0A08; --cream:#E9E3D6; --cream-mut:#968F82; --line:#2A2823;
   --teal:#4A9C8A; --copper:#D98F52; --violet:#7B5EA7;
   --grotesk:'Space Grotesk',system-ui,sans-serif; --mono:'Space Mono',ui-monospace,monospace;
-  --disp:'Unbounded',var(--grotesk); --artist:'Outfit',var(--grotesk); --ital:'Instrument Serif',serif; --data:'Martian Mono',var(--mono);
+  --disp:'Unbounded',var(--grotesk); --ital:'Instrument Serif',serif; --data:'Martian Mono',var(--mono);
   --pad:clamp(16px,3vw,40px);
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -58,9 +78,10 @@ section{position:relative;z-index:2}
 /* ============ HERO ============ */
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;padding:var(--pad) var(--pad) 0;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;opacity:.92;filter:saturate(.85) brightness(.78)}
+.hero-bg{opacity:.86}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:.9}
 .hero-bg::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(11,10,8,.55) 0%,rgba(11,10,8,.30) 34%,rgba(11,10,8,.55) 68%,rgba(11,10,8,.94) 100%)}
+  background:linear-gradient(180deg,rgba(11,10,8,.6) 0%,rgba(11,10,8,.3) 30%,rgba(11,10,8,.5) 62%,rgba(11,10,8,.95) 100%)}
 
 .topbar{position:relative;z-index:4;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;
   font-family:var(--data);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-mut)}
@@ -70,22 +91,63 @@ section{position:relative;z-index:2}
 
 .hero-core{position:relative;z-index:3;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;flex:1;padding:5vh 0 8vh}
 
-.artist-tag{margin-bottom:16px;color:var(--copper)}
-/* il lockup dell'artista: stesso carattere e stessa spaziatura della copertina di Hollow */
-.artist-name{font-family:var(--artist);font-weight:600;font-size:clamp(27px,5.4vw,64px);line-height:1.16;
-  letter-spacing:.21em;text-transform:uppercase;color:var(--cream);text-shadow:0 2px 40px rgba(11,10,8,.55)}
-.artist-date{font-family:var(--data);font-size:clamp(11px,1.4vw,13px);letter-spacing:.22em;text-transform:uppercase;
-  color:var(--cream-mut);margin-top:3vh}
-.presave-lead{margin-top:3.2vh;margin-bottom:12px}
-.presave{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.decay{display:inline-flex;gap:4px;align-items:flex-end;height:16px;margin-bottom:3vh}
+.decay i{display:block;width:5px;background:var(--copper)}
+.decay i:nth-child(1){height:16px}.decay i:nth-child(2){height:11px;opacity:.72}.decay i:nth-child(3){height:7px;opacity:.48}.decay i:nth-child(4){height:4px;opacity:.28}
+
+.topbar .cat b{color:var(--teal);font-weight:700}
+.stamp{display:inline-flex;align-items:baseline;gap:.7em;font-family:var(--data);font-size:clamp(11px,1.4vw,13px);font-weight:700;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--cream);border:1.5px solid var(--copper);padding:9px 16px;margin-bottom:3.4vh;
+  background:rgba(217,143,82,.08)}
+.stamp .cat{color:var(--copper)}
+.wm-stack{position:relative;width:min(100%,760px);font-weight:800}
+.wm-echo{position:absolute;inset:0;font-family:var(--disp);font-weight:800;font-size:clamp(56px,13vw,168px);line-height:.86;
+  letter-spacing:-.03em;color:var(--copper);opacity:.16;transform:translate(18px,15px);text-transform:uppercase}
+.js .wm-echo{animation:echo-in 1.3s cubic-bezier(.16,1,.3,1) .3s both}
+.wm-main{display:block;position:relative;font-family:var(--disp);font-weight:800;font-size:clamp(56px,13vw,168px);line-height:.86;
+  letter-spacing:-.03em;color:var(--cream);text-transform:uppercase}
+@keyframes echo-in{0%{opacity:0;transform:translate(0,0)}30%{opacity:.42;transform:translate(9px,8px)}100%{opacity:.16;transform:translate(18px,15px)}}
+.by{margin-top:2vh;font-family:var(--ital);font-style:italic;font-size:clamp(19px,2.8vw,28px);color:var(--cream-mut)}
+.by b{color:var(--cream);font-style:normal;font-family:var(--grotesk);font-weight:500}
 
 @media(max-width:900px){
   .topbar{font-size:10px;letter-spacing:.1em}
   .logo .wm{display:none}
 }
 
+/* ============ RECORD ============ */
+.record{padding:clamp(64px,10vw,120px) 0 clamp(48px,7vw,80px)}
+.record-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,52px);align-items:start}
+.sleeve img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--line)}
+.credit{margin-top:14px;font-family:var(--data);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-mut);line-height:1.9}
+.credit b{color:var(--cream);font-weight:700}
+.listen{display:flex;flex-direction:column;gap:clamp(22px,3vw,34px)}
+.player-frame{border:1px solid var(--line);background:var(--ink-deep);padding:10px}
+.player iframe{display:block;width:100%;height:166px;border:0}
+.player-hint{margin-top:12px;font-family:var(--data);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-mut)}
+.dest{display:flex;align-items:center;gap:16px;padding:18px 4px;border-bottom:1px solid var(--line);text-decoration:none;
+  transition:padding-left .22s cubic-bezier(.16,1,.3,1),border-color .22s ease}
+.dest:first-child{border-top:1px solid var(--line)}
+.dest:hover,.dest:focus-visible{padding-left:14px;border-color:var(--copper)}
+.dest .ico{width:24px;height:24px;flex:0 0 24px;opacity:.8;transition:opacity .22s ease}
+.dest:hover .ico{opacity:1}
+.dest .name{font-weight:700;font-size:clamp(17px,2vw,21px);letter-spacing:-.01em}
+.dest .act{margin-left:auto;display:flex;align-items:center;gap:12px;font-family:var(--data);font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--cream-mut);transition:color .22s ease}
+.dest:hover .act{color:var(--copper)}
+.dest .arrow{font-size:15px;transition:transform .22s cubic-bezier(.16,1,.3,1)}
+.dest:hover .arrow{transform:translateX(5px)}
+.dest.soon{opacity:.55}
+.dest.soon:hover{padding-left:4px;border-color:var(--line)}
+.dest.soon:hover .act{color:var(--cream-mut)}
+.notes{margin-top:clamp(40px,6vw,72px);max-width:62ch}
+.notes p{font-size:clamp(15px,1.7vw,18px);line-height:1.65;color:var(--cream-mut)}
+.notes p+p{margin-top:14px}
+.notes p:first-child{color:var(--cream)}
+@media(max-width:860px){.record-grid{grid-template-columns:1fr}.sleeve{max-width:420px}}
+
 /* ============ PAST RELEASE ============ */
-.past{padding:clamp(56px,8vw,96px) 0}
+.past{padding:0 0 clamp(56px,8vw,96px)}
 .past-card{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(18px,3vw,32px);align-items:center;
   border:1px solid var(--line);background:var(--ink-deep);padding:clamp(16px,2.4vw,24px);text-decoration:none;
   transition:border-color .22s ease}
@@ -109,8 +171,6 @@ section{position:relative;z-index:2}
   padding:16px 26px;border:1.5px solid var(--copper);display:inline-block;white-space:nowrap;
   background:transparent;color:var(--cream);box-shadow:6px 6px 0 rgba(217,143,82,.3);transition:transform .12s ease,box-shadow .12s ease}
 .cta.ghost:hover{background:var(--copper);color:var(--ink);box-shadow:9px 9px 0 rgba(217,143,82,.3);transform:translate(-2px,-2px)}
-.cta.ghost.quiet{border-color:var(--cream-mut);box-shadow:6px 6px 0 rgba(150,143,130,.22);color:var(--cream)}
-.cta.ghost.quiet:hover{background:var(--cream);color:var(--ink);box-shadow:9px 9px 0 rgba(150,143,130,.22)}
 .foot{margin-top:clamp(40px,6vw,72px);padding-top:24px;border-top:1px solid var(--line);
   display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
   font-family:var(--data);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-mut)}
@@ -119,18 +179,19 @@ section{position:relative;z-index:2}
 .foot a:hover{color:var(--teal)}
 
 @media(prefers-reduced-motion:reduce){
+  .js .wm-echo{animation:none}
   .js .reveal{opacity:1;transform:none;transition:none}
 }
 </style>
 </head>
-<body data-stato="artist">
+<body data-stato="live">
 
 <main>
 
 <!-- ═══════ HERO ═══════ -->
 <header class="hero">
   <div class="hero-bg" aria-hidden="true">
-    <img src="/assets/dv010/hero-artist.webp" width="1400" height="784" alt="" fetchpriority="high" decoding="async">
+    <img src="/assets/dv010/hero-live.webp" width="1400" height="883" alt="" fetchpriority="high" decoding="async">
   </div>
 
   <div class="topbar">
@@ -147,19 +208,79 @@ section{position:relative;z-index:2}
       </svg>
       <span class="wm">desert vision</span>
     </a>
+    <span class="cat"><span>Andy's Echo · </span><b>DV010</b></span>
   </div>
 
   <div class="hero-core">
-    <p class="eyebrow artist-tag">DV010</p>
-    <h1 class="artist-name">Andy&lsquo;s Echo</h1>
-    <p class="artist-date">9 &middot; 10 &middot; 2026.</p>
-    <p class="eyebrow presave-lead">Pre-save</p>
-    <p class="presave">
-      <a class="cta ghost" href="https://hypeddit.com/f2ydln" target="_blank" rel="noopener">Spotify</a>
-      <a class="cta ghost quiet" href="https://hypeddit.com/f2ydln" target="_blank" rel="noopener">Apple Music</a>
-    </p>
+    <span class="decay" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="stamp">Out now<span class="cat">9.10.2026</span></span>
+    <h1 class="wm-stack">
+      <span class="wm-echo" aria-hidden="true">Hollow</span>
+      <span class="wm-main">Hollow</span>
+    </h1>
+    <p class="by">a single by <b>Andy's Echo</b></p>
   </div>
 </header>
+
+<!-- ═══════ RECORD ═══════ -->
+<section class="record" id="record" aria-label="The record">
+  <div class="wrap">
+    <div class="record-grid">
+      <div class="sleeve reveal">
+        <img src="/assets/dv010/cover.webp" width="1100" height="1100" alt="Hollow by Andy's Echo, cover artwork" loading="lazy" decoding="async">
+        <p class="credit">
+          <b>Hollow</b><br>
+          Andy's Echo<br>
+          Desert Vision · DV010<br>
+          9.10.2026
+        </p>
+      </div>
+
+      <div class="listen reveal">
+        <div class="player">
+          <div class="player-frame">
+            <iframe id="sc-player" title="Hollow by Andy's Echo on SoundCloud" loading="lazy" allow="autoplay"
+              src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2406750417&color=%23d98f52&show_artwork=false&show_user=true&sharing=true&buying=false&download=false&show_teaser=false&hide_related=true&show_comments=false"></iframe>
+          </div>
+          <p class="player-hint">Full track, streaming free on SoundCloud.</p>
+        </div>
+
+        <div class="dests">
+          <a class="dest" id="lnk-spotify" href="https://open.spotify.com/album/6I7KvzFVeNv2WCPWFlmOxZ" target="_blank" rel="noopener">
+            <img class="ico" src="https://cdn.simpleicons.org/spotify/E9E3D6" alt="" width="24" height="24" loading="lazy" onerror="this.remove()">
+            <span class="name">Spotify</span>
+            <span class="act"><span>Stream</span><span class="arrow">&rarr;</span></span>
+          </a>
+
+          <a class="dest" id="lnk-beatport" href="https://www.beatport.com/release/hollow/7506760" target="_blank" rel="noopener">
+            <img class="ico" src="https://cdn.simpleicons.org/beatport/E9E3D6" alt="" width="24" height="24" loading="lazy" onerror="this.remove()">
+            <span class="name">Beatport</span>
+            <span class="act"><span>Buy</span><span class="arrow">&rarr;</span></span>
+          </a>
+
+          <a class="dest" id="lnk-soundcloud" href="https://soundcloud.com/desert-vision/andys-echo-hollow-desert" target="_blank" rel="noopener">
+            <img class="ico" src="https://cdn.simpleicons.org/soundcloud/E9E3D6" alt="" width="24" height="24" loading="lazy" onerror="this.remove()">
+            <span class="name">SoundCloud</span>
+            <span class="act"><span>Stream</span><span class="arrow">&rarr;</span></span>
+          </a>
+
+          <!-- NON ANCORA USCITO: Apple riporta 23.10.2026 (album 6815327798). Il 23/10 togliere " soon" e rimettere "Stream". -->
+          <a class="dest soon" id="lnk-apple" href="https://music.apple.com/album/hollow-single/6815327798" target="_blank" rel="noopener">
+            <img class="ico" src="https://cdn.simpleicons.org/applemusic/E9E3D6" alt="" width="24" height="24" loading="lazy" onerror="this.remove()">
+            <span class="name">Apple Music</span>
+            <span class="act"><span>23.10</span><span class="arrow">&rarr;</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes reveal">
+      <p>Desert Vision's tenth release is a single.</p>
+      <p>Andy's Echo, the Berlin live act with releases on 3000Grad, Stil vor Talent and Katermukke, makes his debut on the label with 'Hollow'. He wrote it and he sings it.</p>
+      <p>The track is built on an acid riff from an analogue synth. A deep vocal sits on top, the energy stays rough, and the chords stay with you after it ends. The lyric gives the record its title: "You're clearing my sight, in a world that was hollow."</p>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════ PAST RELEASE ═══════ -->
 <section class="past" aria-label="Past release">
